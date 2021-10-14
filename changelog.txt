@@ -1,0 +1,518 @@
+v0.1
+	modified testing_bot into db
+
+v0.2
+	modified versions
+
+v0.3
+	actually base bot on current bot
+
+v0.4
+	actually added token
+
+v0.5
+	changed id to correct id
+
+v0.6
+	moved help to separate file
+
+v0.7
+	[redacted]
+
+v1.0
+	clean up trash
+
+v1.1
+	[redacted]
+
+v1.2
+	moved channels and linked_channels to cfg.py
+
+v1.2.1
+	fixed echo_cmd dependencies
+
+v2.0
+	moved client to client.py
+
+v2.0.1
+	added clause to kick
+
+v2.0.2
+	move client back to main
+
+v2.0.3
+	added another clause to kick
+
+v2.0.4
+	fixed debug
+
+v2.1.0
+	[redacted]
+
+v2.1.1
+	[redacted]
+
+v2.1.2
+	allowed server admins to use echo_a
+
+v2.1.3
+	[redacted]
+
+v2.1.4
+	[redacted]
+
+v2.1.5
+	hotfix
+
+v2.1.6
+	hotfix 2
+
+v2.1.7
+	removed link preview
+
+v2.1.8
+	[redacted]
+
+v2.1.9
+	[redacted]
+
+v2.2.0
+	[redacted]
+
+v2.2.1
+	hotfix
+
+v2.2.2
+	[redacted]
+
+v2.2.3
+	[redacted]
+
+v2.2.4
+	[redacted]
+
+v2.2.5
+	[redacted]
+
+v2.3.0
+	[redacted]
+
+v2.3.1
+	fixed cmath
+
+v2.3.2
+	changed weeb @everyone to @here
+
+v2.3.3
+	[redacted]
+
+v2.4.0
+	[redacted]
+
+v2.4.1
+	[redacted]
+
+v2.5.0
+	added dice function
+
+v2.5.1
+	hotfix dice
+
+v2.5.2
+	hotfix dice
+
+v2.5.3
+	hotfix dice
+
+v2.5.4
+	[redacted]
+
+v2.5.5
+	[redacted]
+
+v2.5.6
+	[redacted]
+
+v2.5.7
+	[redacted]
+
+v2.5.8
+	changed HTTPException output
+
+v3.0.0
+	uses threading and async loop
+
+v3.0.1
+	changed channel to actual channel
+
+v3.0.2
+	[redacted]
+
+v3.0.3
+	clock hotfix
+
+v3.0.4
+	[redacted]
+
+v3.0.5
+	[redacted]
+
+v3.0.6
+	[redacted]
+
+v3.0.7
+	[redacted]
+
+v3.0.8
+	[redacted]
+
+v3.0.9
+	[redacted]
+
+v3.1.0
+	updated math_cmd
+
+v3.1.1
+	minor changes
+
+v3.1.2
+	minor changes
+
+v3.1.3
+	minor changes
+
+v3.1.4
+	minor changes
+
+v3.1.5
+	minor changes
+
+v3.1.6
+	bug fixes
+
+v3.2.0
+	added emotes
+
+v3.2.1
+	bug fixes
+
+v3.3.0
+	added block
+
+v3.3.1
+	minor changes
+
+v3.3.2
+	update help
+
+v3.4.0
+	[redacted]
+
+v3.5.0 - 17/07/2020
+	overhaul help
+
+v3.5.1 - 18/07/2021
+	chaned to using tabs
+
+v3.5.2 - 20/09/2021
+	added sum to dice
+
+v3.5.3 - 20/09/2021
+	improved dice
+
+v4.0.0 - 20/09/2021
+	added multithreading and timeout
+
+v4.0.1 - 20/09/2021
+	fixed helps
+
+v4.1.0 - 20/09/2021
+	added profile
+
+v4.1.1 - 20/09/2021
+	fixed stuff
+
+v4.1.2 - 20/09/2021
+	updated help
+
+v4.1.3 - 20/09/2021
+	updated ver
+
+v4.1.4 - 20/09/2021
+	[redacted]
+
+v4.1.5 - 20/09/2021
+	[redacted]
+
+v4.1.6 - 20/09/2021
+	[redacted]
+
+v4.1.7 - 20/09/2021
+	[redacted]
+
+v4.1.7b - 20/09/2021
+	fixed bugs
+
+v4.1.7c - 20/09/2021
+	fixed bugs
+
+v4.1.8 - 20/09/2021
+	improver ver
+
+v4.1.8b - 20/09/2021
+	fixed ver
+
+v4.1.9 - 28/09/2021
+	[redacted]
+
+v5.0.0 - 28/09/2021
+	added database
+
+v5.0.1 - 28/09/2021
+	moved time
+
+v5.0.2 - 28/09/2021
+	moved echo
+
+v5.0.2b - 28/09/2021
+	hotfix database.get
+
+v5.0.2c - 28/09/2021
+	hotfix database.get
+
+v5.0.3 - 28/09/2021
+	update database
+
+v5.0.4 - 28/09/2021
+	added database.sync
+
+v5.0.5 - 28/09/2021
+	added cmd.sync
+
+v5.0.5b - 28/09/2021
+	hotfix
+
+v5.0.6 - 28/09/2021
+	fix echoa
+
+v5.0.7 - 28/09/2021
+	moved ping
+
+v5.0.8 - 28/09/2021
+	improved ping
+
+v5.0.9 - 28/09/2021
+	fixed bugs
+
+v5.0.10 - 28/09/2021
+	fixed cmd.sync
+
+v5.0.10b - 28/09/2021
+	hotfix
+
+v5.0.11 - 29/09/2021
+	moved help
+
+v5.0.11b - 29/09/2021
+	hotfix
+
+v5.0.11c - 29/09/2021
+	hotfix
+
+v5.0.12 - 29/09/2021
+	output error
+
+v5.0.12b - 29/09/2021
+	pylint
+
+v5.1.0 - 29/09/2021
+	updated error output
+
+v5.1.1 - 29/09/2021
+	updated main
+
+v5.1.1b - 29/09/2021
+	hotfix
+
+v5.1.1c - 29/09/2021
+	hotfix
+
+v5.2.0 - 29/09/2021
+	added errors
+
+v5.2.1 - 29/09/2021
+	added help error
+
+v5.2.1b - 29/09/2021
+	hotfix
+
+v5.2.1c - 29/09/2021
+	hotfix
+
+v5.2.1d - 29/09/2021
+	hotfix
+
+v5.2.2 - 29/09/2021
+	added TimezoneNotFoundError
+
+v5.2.3 - 29/09/2021
+	resolved TimezoneNotFoundError
+
+v5.2.3b - 29/09/2021
+	hotfix
+
+v5.2.4 - 29/09/2021
+	moved help to helps
+
+v5.2.5 - 29/09/2021
+	improved help
+
+v5.2.5b - 29/09/2021
+	hotfix
+
+v5.2.6 - 29/09/2021
+	improved cmd.sync
+
+v5.3.0 - 29/09/2021
+	added cmd.write
+
+v5.3.0b - 29/09/2021
+	hotfix
+
+v5.3.0c - 29/09/2021
+	hotfix
+
+v5.3.0d - 29/09/2021
+	hotfix
+
+v5.3.0e - 29/09/2021
+	hotfix
+
+v5.3.0f - 29/09/2021
+	hotfix
+
+v5.3.0g - 29/09/2021
+	hotfix
+
+v5.3.0h - 03/10/2021
+	hotfix
+
+v5.3.0i - 03/10/2021
+	hotfix
+
+5.3.0.10 - 2021-10-03
+	hotfix
+
+5.3.0.11 - 2021-10-03
+	hotfix
+
+5.3.1.0 - 2021-10-03
+	update update.py
+
+5.3.1.1 - 2021-10-03
+	hotfix
+
+5.3.1.2 - 2021-10-03
+	hotfix
+
+5.3.1.3 - 2021-10-03
+	hotfix
+
+5.3.1.4 - 2021-10-03
+	hotfix
+
+5.3.1.5 - 2021-10-03
+	hotfix
+
+5.3.2.0 - 2021-10-04
+	moved get_version to cmd.ver
+
+5.4.0.0 - 2021-10-04
+	added d! to prefix
+
+5.4.0.1 - 2021-10-04
+	hotfix
+
+5.4.0.2 - 2021-10-04
+	hotfix
+
+5.4.1.0 - 2021-10-04
+	dms no longer need d!
+
+5.4.1.1 - 2021-10-04
+	hotfix
+
+5.5.0.0 - 2021-10-13
+	added tests
+
+5.5.1.0 - 2021-10-13
+	minor pylinting
+
+5.5.2.0 - 2021-10-13
+	test echo
+
+5.5.3.0 - 2021-10-13
+	test coverage
+
+5.5.4.0 - 2021-10-14
+	updated workflow
+
+5.5.5.0 - 2021-10-14
+	removed old
+
+5.5.5.1 - 2021-10-14
+	hotfix
+
+5.5.6.0 - 2021-10-14
+	added argument required error
+
+5.5.7.0 - 2021-10-14
+	updated text files
+
+5.5.8.0 - 2021-10-14
+	test echoa
+
+5.5.9.0 - 2021-10-14
+	update pytest
+
+5.5.10.0 - 2021-10-14
+	more tests
+
+5.5.11.0 - 2021-10-14
+	pytests
+
+5.5.12.0 - 2021-10-14
+	update update.py
+
+5.5.13.0 - 2021-10-14
+	added unknown argument error
+
+5.5.14.0 - 2021-10-14
+	update update.py
+
+5.5.15.0 - 2021-10-14
+	update cmds/time.py
+
+5.5.16.0 - 2021-10-14
+	pytests
+
+5.5.17.0 - 2021-10-14
+	moved calc and ccalc
+
+5.6.0.0 - 2021-10-14
+	added error log
+
+5.7.0.0 - 2021-10-14
+	fix permissions
+
+5.7.0.1 - 2021-10-14
+	hotfix
+
+5.7.0.2 - 2021-10-14
+	hotfix
+
+5.7.1.0 - 2021-10-14
+	added echoa logging
+
+5.7.1.1 - 2021-10-14
+	hotfix
