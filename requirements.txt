@@ -1,2 +1,6 @@
 discord.py
 discord-py-slash-command
+firebase-admin
+pytest
+trio
+anyio
