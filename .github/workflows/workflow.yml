@@ -26,6 +26,7 @@ jobs:
         pip install discord.py
     - name: Removing old badges
       run: |
+        mkdir -p badges
         cd badges
         rm *
         cd ..
