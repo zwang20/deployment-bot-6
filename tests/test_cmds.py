@@ -69,3 +69,22 @@ async def test_ver():
     # too many arguments
     with pytest.raises(error.UnknownArgumentError):
         assert await cmds.ver(cmessage.Message(), *["1"])
+
+async def test_help():
+    """
+    tests cmds.help
+    """
+
+    # no arguments
+    assert await cmds.help(cmessage.Message())
+
+    # too many arguments
+    with pytest.raises(error.UnknownArgumentError):
+        assert await cmds.help(cmessage.Message(), *["1", "2"])
+
+    # unknwon help
+    with pytest.raises(error.UnknownHelpError):
+        assert await cmds.help(cmessage.Message(), *["1"])
+
+    # help for cmds.echo
+    assert await cmds.help(cmessage.Message(), *["echo"])
