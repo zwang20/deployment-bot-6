@@ -158,7 +158,7 @@ jobs:
       with:
         pull: 'NO-PULL'
         push: "--force"
-        message: 'update date'
+        message: 'update pytest'
         add: '["reports/pytest.txt"]'
   deploy:
     name: Deploy
