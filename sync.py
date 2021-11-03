@@ -12,8 +12,9 @@ import logging
 
 while True:
     logging.info("\t%s Pushing to database", datetime.datetime.now())
-    with open("data.txt", "w", encoding="UTF-8") as file:
-        file.write(str(datetime.datetime.now()))
+    env = dict(os.environ)
+    env["TZ"] = "UTC"
+    subprocess.call(["date", ">", "data.txt"], env=env)
     os.chdir("db-database")
     subprocess.call(["git", "add", "-A"])
     subprocess.call(["git", "commit", "-m", "database-update"])
