@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy-test:
+    name: Deploy Test
+    runs-on: ubuntu-latest
+    needs: [pytest, pylint, coverage, date]
+    steps:
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        if_key_exists: replace
+    - name: Updating remote
+      run: ssh ${{ secrets.SSH_HOST }} "cd ~/db/deployment-bot-6; git reset --hard; git pull"
+    - name: Stopping remote
+      run: ssh ${{ secrets.SSH_HOST }} "sudo screen -XS bot quit"
+      continue-on-error: true
+    - name: Starting remote
+      run: ssh ${{ secrets.SSH_HOST }} "cd ~/db/deployment-bot-6; sudo screen -S bot -d -m python3 ./main.py"

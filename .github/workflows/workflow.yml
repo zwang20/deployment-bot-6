@@ -152,7 +152,7 @@ jobs:
     - name: Running pytest
       run: |
         mkdir -p reports
-        pytest > reports/pytest.txt
+        pytest | tee reports/pytest.txt
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
