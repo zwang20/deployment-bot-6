@@ -10,10 +10,8 @@ import logging
 import datetime
 import traceback
 import os
-# import multiprocessing
-# import subprocess
-# import asyncio
-# import os
+import multiprocessing
+import subprocess
 
 import discord
 # import discord_slash
@@ -22,13 +20,6 @@ import env
 import client
 import version
 import cmds
-
-logging.basicConfig(level=logging.INFO)
-# logging.debug(f"\t{datetime.datetime.now()}")
-# logging.info(f"\t{datetime.datetime.now()}")
-# logging.warning(f"\t\033[33m{datetime.datetime.now()}\033[0m")
-# logging.error(f"\t\033[31m{datetime.datetime.now()}\033[0m")
-# logging.critical(f"\t\033[41m{datetime.datetime.now()}\033[0m")
 
 verbs = {
     "echo": cmds.echo,
@@ -120,7 +111,7 @@ async def on_message(message):
 
     # log command
     logging.info(
-        "\t %s %s: %s", datetime.datetime.now(), message.author, content
+        "\t%s %s: %s", datetime.datetime.now(), message.author, content
     )
 
     # get command
@@ -136,7 +127,7 @@ async def on_message(message):
 
         # log error
         logging.warning(
-            "\t %s \n%s: %s", datetime.datetime.now(), message.author, output
+            "\t%s \n%s: %s", datetime.datetime.now(), message.author, output
         )
 
     # try to send output
@@ -153,11 +144,31 @@ def main():
 
     main function of the program
     """
+
+    logging.info("\t%s Starting database server", datetime.datetime.now())
+
+    # windows
+    if os.name == "nt":
+        multiprocessing.Process(
+            target=subprocess.run,
+            args=(("py", "-m", "database.server"),),
+            daemon=True,
+        ).start()
+
+    # unix
+    else:
+        multiprocessing.Process(
+            target=subprocess.run,
+            args=(("python3", "-m", "database.server"),),
+            daemon=True,
+        ).start()
+
+
     logging.info(
-        "\t %s main starting with discord version %s", datetime.datetime.now(), discord.__version__
+        "\t%s main starting with discord version %s", datetime.datetime.now(), discord.__version__
     )
     logging.info(
-        "\t %s main starting with bot version %s", datetime.datetime.now(), version.version
+        "\t%s main starting with bot version %s", datetime.datetime.now(), version.version
     )
 
     client.client.run(env.TOKEN)  # Start bot
@@ -172,4 +183,10 @@ def main():
     )
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    logging.debug("\t%s This is a debug message log", datetime.datetime.now())
+    logging.info("\t%s This is an info message log", datetime.datetime.now())
+    logging.warning("\t\033[33m%s\033[0m This is a warning message log", datetime.datetime.now())
+    logging.error("\t\033[31m%s\033[0m This is an error message log", datetime.datetime.now())
+    logging.critical("\t\033[41m%s\033[0m This is a critical message log", datetime.datetime.now())
     main()
