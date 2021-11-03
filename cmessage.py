@@ -1,10 +1,3 @@
-# pylint:disable=missing-module-docstring
-# pylint:disable=invalid-name
-# pylint:disable=missing-class-docstring
-# pylint:disable=too-few-public-methods
-# pylint:disable=missing-function-docstring
-# pylint:disable=unused-argument
-# pylint:disable=no-self-use
 
 class Permisions():
     def __init__(self):
