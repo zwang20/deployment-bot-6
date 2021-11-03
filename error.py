@@ -1,3 +1,8 @@
+"""
+error.py
+
+    This module contains the error classes.
+"""
 class AuthorisationError(Exception):
     """
     Exception raised for errors in authorisation
