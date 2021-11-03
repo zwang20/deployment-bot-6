@@ -11,10 +11,6 @@
 #
 name: "CodeQL"
 
-concurrency: 
-  group: CodeQL
-  cancel-in-progress: true
-
 on:
   push:
     branches: [ main ]

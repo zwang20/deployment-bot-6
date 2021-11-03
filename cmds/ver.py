@@ -24,8 +24,8 @@ async def ver(*args):
     with open('date.txt', 'r', encoding="utf-8") as date:
         with open("data.txt", "r", encoding="utf-8") as data:
             output = '\n'.join([
-                'Version:               {}'.format(version),
-                'Last updated:          {}'.format(date.readline()),
-                'Database last updated: {}'.format(data.readline()),
+                f'Version:               {version}',
+                f'Last updated:          {date.readline()}',
+                f'Database last updated: {data.readline()}',
             ])
             return f'```{output}```'
