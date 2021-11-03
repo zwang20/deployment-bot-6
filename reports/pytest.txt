@@ -24,4 +24,4 @@ tests/test_cmds.py::test_ver
     warnings.warn(PytestUnhandledCoroutineWarning(msg.format(nodeid)))
 
 -- Docs: https://docs.pytest.org/en/stable/warnings.html
-======================== 4 skipped, 5 warnings in 0.06s ========================
+======================== 4 skipped, 5 warnings in 0.03s ========================
