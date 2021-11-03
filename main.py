@@ -145,7 +145,7 @@ def main():
     main function of the program
     """
 
-    logging.info("\t%s Starting database server", datetime.datetime.now())
+    logging.info("\t%s Starting database server and database sync", datetime.datetime.now())
 
     # windows
     if os.name == "nt":

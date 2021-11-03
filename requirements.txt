@@ -4,3 +4,9 @@ firebase-admin
 pytest
 trio
 anyio
+Flask
+Flask-Cors
+coverage
+pylint
+PyJWT
+pytest
