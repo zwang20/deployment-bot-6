@@ -72,6 +72,7 @@ jobs:
         pip install -r requirements.txt
     - name: Running pylint
       run: |
+        mkdir -p badges
         find . -type f -name "*.py" | xargs pylint | tee pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Creating pylint badge
       run: |
@@ -106,6 +107,7 @@ jobs:
         mv htmlcov coverage
     - name: Creating coverage badge
       run: |
+        mkdir -p badges
         coverage report | tee coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
         anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
     - name: Upload files
