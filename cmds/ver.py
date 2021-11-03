@@ -24,7 +24,7 @@ async def ver(*args):
     with open('date.txt', 'r', encoding="utf-8") as date:
         with open("data.txt", "r", encoding="utf-8") as data:
             output = '\n'.join([
-                f'Version:               {version}',
+                f'Discord bot version:   {version}',
                 f'Last updated:          {date.readline()}',
                 f'Database last updated: {data.readline()}',
             ])
