@@ -10,12 +10,15 @@ import time
 import datetime
 import logging
 
-os.chdir("db-database")
 while True:
     logging.info("\t%s Pushing to database", datetime.datetime.now())
+    os.chdir("db-database")
     subprocess.call(["git", "add", "-A"])
     subprocess.call(["git", "commit", "-m", "database-update"])
     subprocess.call(["git", "push", "--force"])
+    os.chdir("..")
     logging.info("\t%s Pulling from database", datetime.datetime.now())
+    os.chdir("db-database")
     subprocess.call(["git", "pull"])
+    os.chdir("..")
     time.sleep(60)
