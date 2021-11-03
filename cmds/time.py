@@ -10,12 +10,15 @@ import pytz
 import error
 
 
-async def time(message, *args):
+async def time(*args):
     """
     time()
 
     returns time at timezone
     """
+
+    # fix args
+    args = args[1:]
 
     # checks for excess arguments
     if len(args) > 1:
