@@ -8,3 +8,4 @@ pylint
 PyJWT
 pytest
 anybadge
+pytz

@@ -37,10 +37,11 @@ jobs:
     - name: Running coverage
       run: |
         coverage run -m pytest
+      continue-on-error: true
+    - name: Coverage Report
         coverage html
         rm -rf coverage
         mv htmlcov coverage
-      continue-on-error: true
     - name: Creating coverage badge
       run: |
         coverage report | tee coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
