@@ -22,4 +22,4 @@ async def ver(*args):
         raise error.UnknownArgumentError
 
     with open('date.txt', 'r', encoding="utf-8") as file:
-        return f"""```version:{'v'+version} \nupdated: {file.read()}```"""
+        return f"""```version: 'v'{version} \nupdated: {file.read()}```"""
