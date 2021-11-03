@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Wait for update
       run:
-        while [[ *"automated"* != $(git log -1) ]];
+        while (git log -1 | grep -q 'automated');
           do git pull;
           sleep 1;
         done;
