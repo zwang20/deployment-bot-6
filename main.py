@@ -28,6 +28,10 @@ verbs = {
     ) if not key.startswith("_")
 }
 
+# aliases
+verbs["version"] = verbs["ver"]
+verbs["help"] = verbs["chelp"]
+
 @client.client.event
 async def on_ready():
     """
