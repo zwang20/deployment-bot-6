@@ -39,6 +39,7 @@ jobs:
         coverage run -m pytest
       continue-on-error: true
     - name: Coverage Report
+    - run: |
         coverage html
         rm -rf coverage
         mv htmlcov coverage
