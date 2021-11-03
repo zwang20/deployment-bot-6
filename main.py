@@ -154,6 +154,11 @@ def main():
             args=(("py", "-m", "database.server"),),
             daemon=True,
         ).start()
+        multiprocessing.Process(
+            target=subprocess.run,
+            args=(("py", "sync.py"),),
+            daemon=True,
+        ).start()
 
     # unix
     else:
@@ -162,6 +167,12 @@ def main():
             args=(("python3", "-m", "database.server"),),
             daemon=True,
         ).start()
+        multiprocessing.Process(
+            target=subprocess.run,
+            args=(("python3", "sync.py"),),
+            daemon=True,
+        ).start()
+
 
 
     logging.info(
