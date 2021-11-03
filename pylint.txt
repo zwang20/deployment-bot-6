@@ -1,1 +1,22 @@
-9.35
+************* Module __init__.py
+__init__.py:1:0: F0001: No module named __init__.py (fatal)
+__init__.py:1:0: F0001: No module named __init__.py (fatal)
+************* Module echo.py
+echo.py:1:0: F0001: No module named echo.py (fatal)
+************* Module ping.py
+ping.py:1:0: F0001: No module named ping.py (fatal)
+************* Module time.py
+time.py:1:0: F0001: No module named time.py (fatal)
+************* Module ver.py
+ver.py:1:0: F0001: No module named ver.py (fatal)
+__init__.py:1:0: F0001: No module named __init__.py (fatal)
+************* Module test_cmds.py
+test_cmds.py:1:0: F0001: No module named test_cmds.py (fatal)
+************* Module error
+error.py:89:0: C0304: Final newline missing (missing-final-newline)
+************* Module main
+main.py:20:0: E0401: Unable to import 'env' (import-error)
+
+-----------------------------------
+Your code has been rated at 9.35/10
+

@@ -1,1 +1,8 @@
-12
+Name                 Stmts   Miss  Cover
+----------------------------------------
+cmds/__init__.py         4      3    25%
+cmds/time.py            13     11    15%
+tests/__init__.py        0      0   100%
+tests/test_cmds.py      26     24     8%
+----------------------------------------
+TOTAL                   43     38    12%
