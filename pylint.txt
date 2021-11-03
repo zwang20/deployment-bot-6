@@ -1,0 +1,11 @@
+************* Module main
+main.py:19:0: E0401: Unable to import 'env' (import-error)
+************* Module database.server
+database/server.py:11:0: E0401: Unable to import 'env' (import-error)
+database/server.py:22:4: R1705: Unnecessary "else" after "return" (no-else-return)
+database/server.py:17:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+database/server.py:32:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+
+-----------------------------------
+Your code has been rated at 9.44/10
+
