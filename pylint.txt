@@ -1,0 +1,13 @@
+************* Module env.__init__
+env/__init__.py:14:0: C0301: Line too long (267/100) (line-too-long)
+************* Module env
+env/__init__.py:14:0: C0103: Constant name "secret" doesn't conform to UPPER_CASE naming style (invalid-name)
+env/__init__.py:15:0: C0103: Constant name "port" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module database.server
+database/server.py:22:4: R1705: Unnecessary "else" after "return" (no-else-return)
+database/server.py:17:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+database/server.py:32:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+
+------------------------------------------------------------------
+Your code has been rated at 9.75/10 (previous run: 9.75/10, +0.00)
+
