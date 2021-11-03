@@ -1,12 +1,10 @@
 discord.py
 discord-py-slash-command
-firebase-admin
 pytest
-trio
-anyio
 Flask
 Flask-Cors
 coverage
 pylint
 PyJWT
 pytest
+anybadge
