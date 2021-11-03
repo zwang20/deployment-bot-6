@@ -33,4 +33,4 @@ async def chelp(*args):
     else:
         string = '\n'.join(get("help"))
 
-    return """```{}```""".format(string)
+    return f"""```{string}```"""

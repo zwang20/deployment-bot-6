@@ -21,13 +21,7 @@ import client
 import version
 import cmds
 
-verbs = {
-    "echo": cmds.echo,
-    "ping": cmds.ping,
-    "version": cmds.ver,
-    "ver": cmds.ver,
-    "time": cmds.time,
-}
+verbs = {i for i in dir(cmds) if not i.startswith("_")}
 
 @client.client.event
 async def on_ready():

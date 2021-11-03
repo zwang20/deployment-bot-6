@@ -11,9 +11,11 @@ class User():
         self.discriminator = "1234"
         self.admin = False
 
+    def __str__(self):
+        return f"{self.name}#{self.discriminator}"
+
     def permmisions_in(self, *args, **kwargs):
         return Permisions()
-
 
 class Message():
     def __init__(self):

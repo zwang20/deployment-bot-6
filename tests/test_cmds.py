@@ -76,15 +76,15 @@ async def test_help():
     """
 
     # no arguments
-    assert await cmds.help(cmessage.Message())
+    assert await cmds.chelp(cmessage.Message())
 
     # too many arguments
     with pytest.raises(error.UnknownArgumentError):
-        assert await cmds.help(cmessage.Message(), *["1", "2"])
+        assert await cmds.chelp(cmessage.Message(), *["1", "2"])
 
     # unknwon help
-    with pytest.raises(error.UnknownHelpError):
-        assert await cmds.help(cmessage.Message(), *["1"])
+    with pytest.raises(error.HelpNotFoundError):
+        assert await cmds.chelp(cmessage.Message(), *["1"])
 
     # help for cmds.echo
-    assert await cmds.help(cmessage.Message(), *["echo"])
+    assert await cmds.chelp(cmessage.Message(), *["echo"])
