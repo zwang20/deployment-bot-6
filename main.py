@@ -120,7 +120,7 @@ async def on_message(message):
     # try command
     try:
         with message.channel.typing():
-            output = verbs[verb](message, nouns)
+            output = verbs[verb](message, *nouns)
     except Exception as err:
         output = traceback.format_exc(err)
 
