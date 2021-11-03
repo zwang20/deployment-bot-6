@@ -5,15 +5,38 @@ on:
 
 
 jobs:
-  build:
-
+  remove:
+    name: Remove
     runs-on: ubuntu-latest
-
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Remove files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        message: 'remove files'
+        remove: '["date.txt", "pylint.txt", "coverage.txt", "badges/*", "coverage/*"]'
+  date:
+    name: Date
+    runs-on: ubuntu-latest
+    needs: [remove]
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Get current date
       run: TZ='UTC' date > date.txt
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        message: 'update date'
+        add: '["date.txt"]'
+  pylint:
+    name: Pylint
+    runs-on: ubuntu-latest
+    needs: [remove]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
@@ -22,18 +45,32 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Remove old badges
-      run: |
-        mkdir -p badges
-        cd badges
-        rm -rf *
-        cd ..
     - name: Running pylint
       run: |
         find . -type f -name "*.py" | xargs pylint | tee pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Creating pylint badge
       run: |
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        message: 'update pylint'
+        add: '["pylint.txt", "badges/*"]'
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-latest
+    needs: [remove]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     - name: Running coverage
       run: |
         coverage run -m pytest
@@ -41,7 +78,6 @@ jobs:
     - name: Coverage Report
       run: |
         coverage html
-        rm -rf coverage
         mv htmlcov coverage
     - name: Creating coverage badge
       run: |
@@ -50,5 +86,5 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        message: 'update files'
-        add: "['badges/*', 'coverage/*', '*.txt']"
+        message: 'update coverage'
+        add: '["coverage.txt", "badges/*", "coverage/*"]'
