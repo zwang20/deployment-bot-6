@@ -1,5 +1,3 @@
-# pylint:disable=invalid-name
-# pylint:disable=global-at-module-level
 """
 client
 
@@ -17,6 +15,6 @@ global BOT_STATUS
 BOT_STATUS = False
 
 global DEBUG_STATUS
-DEBUG_STATUS = False
+DEBUG_STATUS = True
 
 client = discord.Client(loop=loop)

@@ -11,7 +11,6 @@ import error
 
 
 async def time(message, *args):
-    # pylint:disable=unused-argument
     """
     time()
 
