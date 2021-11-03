@@ -57,3 +57,15 @@ async def test_time():
 
     # normal usage
     assert await cmds.time(cmessage.Message(), *["America/New_York"])
+
+async def test_ver():
+    """
+    tests cmds.ver
+    """
+
+    # no arguments
+    assert await cmds.ver(cmessage.Message())
+
+    # too many arguments
+    with pytest.raises(error.UnknownArgumentError):
+        assert await cmds.ver(cmessage.Message(), *["1"])
