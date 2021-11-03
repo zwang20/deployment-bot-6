@@ -12,6 +12,7 @@ import traceback
 import os
 import multiprocessing
 import subprocess
+import inspect
 
 import discord
 # import discord_slash
@@ -21,7 +22,11 @@ import client
 import version
 import cmds
 
-verbs = {i for i in dir(cmds) if not i.startswith("_")}
+verbs = {
+    key: value for key, value in inspect.getmembers(
+        cmds, inspect.isfunction
+    ) if not key.startswith("_")
+}
 
 @client.client.event
 async def on_ready():
