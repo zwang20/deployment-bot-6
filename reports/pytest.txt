@@ -108,7 +108,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.250.191.238) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3075ms\n\n'
+stdout = b'PING google.com (142.251.45.78) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3073ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -505,4 +505,4 @@ FAILED tests/test_cmds.py::test_time[trio] - ModuleNotFoundError: No module n...
 FAILED tests/test_cmds.py::test_ver[trio] - ModuleNotFoundError: No module na...
 FAILED tests/test_cmds.py::test_help[asyncio] - FileNotFoundError: [Errno 2] ...
 FAILED tests/test_cmds.py::test_help[trio] - ModuleNotFoundError: No module n...
-========================= 7 failed, 3 passed in 13.66s =========================
+========================= 7 failed, 3 passed in 13.73s =========================
