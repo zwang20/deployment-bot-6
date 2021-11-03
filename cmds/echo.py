@@ -16,6 +16,6 @@ async def echo(message, *args):
 
     # check for arguments:
     if args:
-        return f"`{message.author.name}#{message.author.discriminator}:` {' '.join(args)}"
+        return f"`{message.author}:` {' '.join(args)}"
 
     raise error.ArgumentRequiredError

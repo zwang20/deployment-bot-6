@@ -45,6 +45,7 @@ async def on_ready():
 
     event handler for when the client is ready
     """
+
     logging.info(
         "\t %s We have logged in as %s", datetime.datetime.now(), client.client.user
     )
@@ -54,7 +55,7 @@ async def on_ready():
     await client.client.change_presence(
         activity=discord.Activity(
             type=discord.ActivityType.watching,
-            name="servers",
+            name="for commands",
         )
     )
 
@@ -162,6 +163,13 @@ def main():
     client.client.run(env.TOKEN)  # Start bot
     # Nothing will run after that
 
+    # log critical
+    logging.critical(
+        "\t\033[41m%s\033[0m discord client has ended", datetime.datetime.now()
+    )
+    logging.critical(
+        "\t\033[41m%s\033[0m ending program", datetime.datetime.now()
+    )
 
 if __name__ == '__main__':
     main()
