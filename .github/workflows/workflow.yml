@@ -27,6 +27,7 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
+        push: "--force"
         message: 'automated file removal'
         remove: '["date.txt", "pylint.txt", "coverage.txt", "badges/*", "coverage/*"]'
   wait:
@@ -68,8 +69,9 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
+        push: "--force"
         message: 'automated pylint update'
-        add: '["pylint.txt --force", "badges/pylint.svg --force", "badges/pylint.txt --force"]'
+        add: '["pylint.txt", "badges/pylint.svg", "badges/pylint.txt"]'
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -102,8 +104,9 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
+        push: "--force"
         message: 'automated coverage update'
-        add: '["coverage.txt --force", "badges/coverage.svg --force", "badges/coverage.txt --force", "coverage/* --force"]'
+        add: '["coverage.txt", "badges/coverage.svg", "badges/coverage.txt", "coverage/*"]'
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -117,8 +120,9 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
+        push: "--force"
         message: 'done automated date update'
-        add: '["date.txt --force"]'
+        add: '["date.txt"]'
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -151,5 +155,6 @@ jobs:
       run: ssh ${{ secrets.SSH_HOST }} "cd ~/db/deployment-bot-6; git reset --hard; git pull"
     - name: Stopping remote
       run: ssh ${{ secrets.SSH_HOST }} "sudo screen -XS bot quit"
+      continue-on-error: true
     - name: Starting remote
       run: ssh ${{ secrets.SSH_HOST }} "cd ~/db/deployment-bot-6; sudo screen -S bot -d -m python3 ./main.py"
