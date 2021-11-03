@@ -9,6 +9,7 @@ run `py main.py` on windows or
 import logging
 import datetime
 import traceback
+import os
 # import multiprocessing
 # import subprocess
 # import asyncio
@@ -64,6 +65,9 @@ async def process_message(message) -> list:
     processes a message
     """
 
+    # declear variables
+    content = []
+
     # ignore bots
     if message.author.bot:
         return []
@@ -103,7 +107,7 @@ async def on_message(message):
     """
 
     # process message
-    content = process_message(message)
+    content = await process_message(message)
 
     # return if no message
     if not content:
@@ -113,6 +117,11 @@ async def on_message(message):
     if len(content) < 1:
         return
 
+    # log command
+    logging.info(
+        "\t %s %s: %s", datetime.datetime.now(), message.author, content
+    )
+
     # get command
     verb = content[0].lower()
     nouns = content[1:]
@@ -120,15 +129,20 @@ async def on_message(message):
     # try command
     try:
         with message.channel.typing():
-            output = verbs[verb](message, *nouns)
-    except Exception as err:
-        output = traceback.format_exc(err)
+            output = await verbs[verb](message, *nouns)
+    except Exception:
+        output = traceback.format_exc().replace(os.getcwd(), "")
+
+        # log error
+        logging.warning(
+            "\t %s \n%s: %s", datetime.datetime.now(), message.author, output
+        )
 
     # try to send output
     try:
         await message.channel.send(output)
-    except Exception as err:
-        await message.channel.send(traceback.format_exc(err))
+    except Exception:
+        await message.channel.send(traceback.format_exc().replace(os.getcwd(), ""))
 
 
 
