@@ -176,6 +176,7 @@ jobs:
         key: ${{ secrets.KEY }}
         script: |
           cd ~/db/deployment-bot-6
+          sudo chmod -R 777 .
           git fetch origin
           git reset --hard origin/main
           git pull
