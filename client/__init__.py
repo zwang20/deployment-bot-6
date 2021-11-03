@@ -3,6 +3,8 @@ client
 
 includes variables important to the function of the bot
 """
+#pylint:disable=global-at-module-level
+#pylint:disable=invalid-name
 
 import asyncio
 
@@ -17,4 +19,5 @@ BOT_STATUS = False
 global DEBUG_STATUS
 DEBUG_STATUS = True
 
+global client
 client = discord.Client(loop=loop)

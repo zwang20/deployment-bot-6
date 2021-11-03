@@ -57,7 +57,7 @@ async def on_ready():
         )
     )
 
-async def process_message(message) -> list[str]:
+async def process_message(message) -> list:
     """
     process_message()
 
