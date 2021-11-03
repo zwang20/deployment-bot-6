@@ -34,7 +34,7 @@ jobs:
         cd ..
     - name: Running pylint
       run: |
-        pylint `find . -type f -name "*.py" | xargs pylint` | tee pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
+        `find . -type f -name "*.py" | xargs pylint` | tee pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Creating pylint badge
       run: |
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
