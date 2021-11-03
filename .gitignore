@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # ignore database
-/db-database
+db-database/
