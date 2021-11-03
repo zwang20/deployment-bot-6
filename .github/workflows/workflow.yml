@@ -38,9 +38,9 @@ jobs:
     - name: Wait for update
       run:
         while [[ *"automated"* != $(git log -1) ]];
-          do git pull
-          sleep 1
-        done
+          do git pull;
+          sleep 1;
+        done;
   date:
     name: Date
     runs-on: ubuntu-latest
