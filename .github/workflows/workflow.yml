@@ -55,7 +55,7 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         message: 'update pylint'
-        add: '["pylint.txt", "badges/*"]'
+        add: '["pylint.txt", "badges/pylint.svg", "badges/pylint.txt"]'
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -87,4 +87,4 @@ jobs:
       uses: EndBug/add-and-commit@v7.4.0
       with:
         message: 'update coverage'
-        add: '["coverage.txt", "badges/*", "coverage/*"]'
+        add: '["coverage.txt", "badges/coverage.txt", "badges/coverage.txt", "coverage/*"]'
