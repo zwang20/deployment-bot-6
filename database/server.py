@@ -86,4 +86,4 @@ def handle_request(path):
         return {}
 
 if __name__=="__main__":
-    APP.run(port=12345)
+    APP.run(port=env.port)
