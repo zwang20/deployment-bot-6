@@ -6,48 +6,9 @@ on:
     branches: [ main ]
 
 jobs:
-  check:
-    name: Check
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Check last push
-      run: |
-        if [[ *"automated"* == $(git log -1) ]]; then
-          exit 1
-        fi
-  remove:
-    name: Remove
-    runs-on: ubuntu-latest
-    needs: [check]
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Remove files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: 'NO-PULL'
-        push: "--force"
-        message: 'automated file removal'
-        remove: '["date.txt", "pylint.txt", "coverage.txt", "badges/*", "coverage/*"]'
-  wait:
-    name: Wait
-    runs-on: ubuntu-latest
-    needs: [remove]
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Wait for update
-      run:
-        while (git log -1 | grep -q 'automated');
-          do git pull;
-          sleep 1;
-        done;
   pylint:
     name: Pylint
     runs-on: ubuntu-latest
-    needs: [wait]
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -62,21 +23,47 @@ jobs:
     - name: Running pylint
       run: |
         mkdir -p badges
-        find . -type f -name "*.py" | xargs pylint | tee pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
+        mkdir -p reports
+        find . -type f -name "*.py" | xargs pylint | tee reports/pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        pull: 'NO-PULL'
+        push: "--force"
+        message: 'update pylint'
+        add: '["reports/pylint.txt", "badges/pylint.txt"]'
+        pathspec_error_handling: 'exitImmediately'
+  pylint-badge:
+    name: Pylint badge
+    runs-on: ubuntu-latest
+    needs: [pylint]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     - name: Creating pylint badge
       run: |
+        mkdir -p badges
+        rm -f badges/pylint.svg
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
         push: "--force"
-        message: 'automated pylint update'
-        add: '["pylint.txt", "badges/pylint.svg", "badges/pylint.txt"]'
+        message: 'pylint badge'
+        add: '["badges/pylint.svg"]'
+        pathspec_error_handling: 'exitImmediately'
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
-    needs: [wait]
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -99,19 +86,48 @@ jobs:
     - name: Creating coverage badge
       run: |
         mkdir -p badges
-        coverage report | tee coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
+        mkdir -p reports
+        coverage report | tee reports/coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
         anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
         pull: 'NO-PULL'
         push: "--force"
-        message: 'automated coverage update'
-        add: '["coverage.txt", "badges/coverage.svg", "badges/coverage.txt", "coverage/*"]'
+        message: 'update coverage'
+        add: '["coverage.txt", "badges/coverage.txt", "coverage/*"]'
+        pathspec_error_handling: 'exitImmediately'
+  coverage-badge:
+    name: Coverage badge
+    runs-on: ubuntu-latest
+    needs: [coverage]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Creating coverage badge
+      run: |
+        mkdir -p badges
+        rm -f badges/coverage.svg
+        anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        pull: 'NO-PULL'
+        push: "--force"
+        message: 'coverage badge'
+        add: '["badges/coverage.svg"]'
+        pathspec_error_handling: 'exitImmediately'
   date:
     name: Date
     runs-on: ubuntu-latest
-    needs: [wait]
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -122,8 +138,9 @@ jobs:
       with:
         pull: 'NO-PULL'
         push: "--force"
-        message: 'done automated date update'
+        message: 'update date'
         add: '["date.txt"]'
+        pathspec_error_handling: 'exitImmediately'
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -140,7 +157,16 @@ jobs:
         pip install -r requirements.txt
     - name: Running pytest
       run: |
-        pytest
+        mkdir -p reports
+        pytest > reports/pytest.txt
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        pull: 'NO-PULL'
+        push: "--force"
+        message: 'update date'
+        add: '["reports/pytest.txt"]'
+        pathspec_error_handling: 'exitImmediately'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
