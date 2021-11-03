@@ -32,7 +32,6 @@ jobs:
         push: "--force"
         message: 'update pylint'
         add: '["reports/pylint.txt", "badges/pylint.txt"]'
-        pathspec_error_handling: 'exitImmediately'
   pylint-badge:
     name: Pylint badge
     runs-on: ubuntu-latest
@@ -60,7 +59,6 @@ jobs:
         push: "--force"
         message: 'pylint badge'
         add: '["badges/pylint.svg"]'
-        pathspec_error_handling: 'exitImmediately'
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -95,7 +93,6 @@ jobs:
         push: "--force"
         message: 'update coverage'
         add: '["coverage.txt", "badges/coverage.txt", "coverage/*"]'
-        pathspec_error_handling: 'exitImmediately'
   coverage-badge:
     name: Coverage badge
     runs-on: ubuntu-latest
@@ -123,7 +120,6 @@ jobs:
         push: "--force"
         message: 'coverage badge'
         add: '["badges/coverage.svg"]'
-        pathspec_error_handling: 'exitImmediately'
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -139,7 +135,6 @@ jobs:
         push: "--force"
         message: 'update date'
         add: '["date.txt"]'
-        pathspec_error_handling: 'exitImmediately'
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -165,7 +160,6 @@ jobs:
         push: "--force"
         message: 'update date'
         add: '["reports/pytest.txt"]'
-        pathspec_error_handling: 'exitImmediately'
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
