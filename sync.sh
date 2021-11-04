@@ -7,7 +7,8 @@ while true; do
     date > data.txt
     cd db-database
     git add -A
-    git commit -m "Database Sync from $(hostname)"
+    export TZ="UTC"
+    git commit -m "$(date) $(hostname)"
     git push
     echo "Pulling from database"
     git stash
