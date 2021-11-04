@@ -4,7 +4,7 @@ while true; do
     echo "Pushing to database"
     sudo chmod 777 -R .
     TZ='UTC'
-    date > date.txt
+    date > data.txt
     cd db-database
     git add -A
     git commit -m "Database Sync from $(hostname)"
