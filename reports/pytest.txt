@@ -4,7 +4,7 @@ rootdir: /home/runner/work/deployment-bot-6/deployment-bot-6
 plugins: anyio-3.3.4
 collected 10 items
 
-tests/test_cmds.py ..FF....FF                                            [100%]
+tests/test_cmds.py ..FF..FFFF                                            [100%]
 
 =================================== FAILURES ===================================
 ______________________________ test_ping[asyncio] ______________________________
@@ -36,7 +36,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.250.190.46) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3055ms\n\n'
+stdout = b'PING google.com (142.250.114.138) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3055ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -137,7 +137,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.250.190.46) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3074ms\n\n'
+stdout = b'PING google.com (142.250.114.113) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3076ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -209,6 +209,72 @@ stderr = None, retcode = 1
 E               subprocess.CalledProcessError: Command '['ping', '-c', '4', 'google.com']' returned non-zero exit status 1.
 
 /opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/subprocess.py:524: CalledProcessError
+______________________________ test_ver[asyncio] _______________________________
+
+    async def test_ver():
+        """
+        tests cmds.ver
+        """
+    
+        # no arguments
+>       assert await cmds.ver(cmessage.Message())
+
+tests/test_cmds.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+
+    async def ver(*args):
+        """
+        ver
+    
+        returns formated version and date of update
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 0:
+            raise error.UnknownArgumentError
+    
+>       with open('date.txt', 'r', encoding="utf-8") as date:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'date.txt'
+
+cmds/ver.py:24: FileNotFoundError
+________________________________ test_ver[trio] ________________________________
+
+    async def test_ver():
+        """
+        tests cmds.ver
+        """
+    
+        # no arguments
+>       assert await cmds.ver(cmessage.Message())
+
+tests/test_cmds.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+
+    async def ver(*args):
+        """
+        ver
+    
+        returns formated version and date of update
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 0:
+            raise error.UnknownArgumentError
+    
+>       with open('date.txt', 'r', encoding="utf-8") as date:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'date.txt'
+
+cmds/ver.py:24: FileNotFoundError
 ______________________________ test_help[asyncio] ______________________________
 
     async def test_help():
@@ -270,6 +336,8 @@ database/get.py:17: FileNotFoundError
 =========================== short test summary info ============================
 FAILED tests/test_cmds.py::test_ping[asyncio] - subprocess.CalledProcessError...
 FAILED tests/test_cmds.py::test_ping[trio] - subprocess.CalledProcessError: C...
+FAILED tests/test_cmds.py::test_ver[asyncio] - FileNotFoundError: [Errno 2] N...
+FAILED tests/test_cmds.py::test_ver[trio] - FileNotFoundError: [Errno 2] No s...
 FAILED tests/test_cmds.py::test_help[asyncio] - FileNotFoundError: [Errno 2] ...
 FAILED tests/test_cmds.py::test_help[trio] - FileNotFoundError: [Errno 2] No ...
-========================= 4 failed, 6 passed in 26.91s =========================
+========================= 6 failed, 4 passed in 26.78s =========================
