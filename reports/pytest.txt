@@ -4,81 +4,9 @@ rootdir: /home/runner/work/deployment-bot-6/deployment-bot-6
 plugins: anyio-3.3.4
 collected 10 items
 
-tests/test_cmds.py .FFF.F.FFF                                            [100%]
+tests/test_cmds.py ..FF....FF                                            [100%]
 
 =================================== FAILURES ===================================
-_______________________________ test_echo[trio] ________________________________
-
-asynclib_name = 'trio'
-
-    def get_asynclib(asynclib_name: Optional[str] = None) -> Any:
-        if asynclib_name is None:
-            asynclib_name = sniffio.current_async_library()
-    
-        modulename = 'anyio._backends._' + asynclib_name
-        try:
->           return sys.modules[modulename]
-E           KeyError: 'anyio._backends._trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:140: KeyError
-
-During handling of the above exception, another exception occurred:
-
-pyfuncitem = <Function test_echo[trio]>
-
-    @pytest.hookimpl(tryfirst=True)
-    def pytest_pyfunc_call(pyfuncitem: Any) -> Optional[bool]:
-        def run_with_hypothesis(**kwargs: Any) -> None:
-            with get_runner(backend_name, backend_options) as runner:
-                runner.call(original_func, **kwargs)
-    
-        backend = pyfuncitem.funcargs.get('anyio_backend')
-        if backend:
-            backend_name, backend_options = extract_backend_and_options(backend)
-    
-            if hasattr(pyfuncitem.obj, 'hypothesis'):
-                # Wrap the inner test function unless it's already wrapped
-                original_func = pyfuncitem.obj.hypothesis.inner_test
-                if original_func.__qualname__ != run_with_hypothesis.__qualname__:
-                    if iscoroutinefunction(original_func):
-                        pyfuncitem.obj.hypothesis.inner_test = run_with_hypothesis
-    
-                return None
-    
-            if iscoroutinefunction(pyfuncitem.obj):
-                funcargs = pyfuncitem.funcargs
-                testargs = {arg: funcargs[arg] for arg in pyfuncitem._fixtureinfo.argnames}
->               with get_runner(backend_name, backend_options) as runner:
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:126: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/contextlib.py:135: in __enter__
-    return next(self.gen)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:34: in get_runner
-    asynclib = get_asynclib(backend_name)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:142: in get_asynclib
-    return import_module(modulename)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-    import array
-    import math
-    import socket
-    from concurrent.futures import Future
-    from dataclasses import dataclass
-    from functools import partial
-    from io import IOBase
-    from os import PathLike
-    from types import TracebackType
-    from typing import (
-        Any, Awaitable, Callable, Collection, ContextManager, Coroutine, Deque, Dict, Generic, List,
-        Mapping, NoReturn, Optional, Sequence, Set, Tuple, Type, TypeVar, Union)
-    
->   import trio.from_thread
-E   ModuleNotFoundError: No module named 'trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_backends/_trio.py:14: ModuleNotFoundError
 ______________________________ test_ping[asyncio] ______________________________
 
     async def test_ping():
@@ -108,7 +36,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.251.32.174) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3051ms\n\n'
+stdout = b'PING google.com (142.250.191.174) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3068ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -182,220 +110,105 @@ E               subprocess.CalledProcessError: Command '['ping', '-c', '4', 'goo
 /opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/subprocess.py:524: CalledProcessError
 _______________________________ test_ping[trio] ________________________________
 
-asynclib_name = 'trio'
-
-    def get_asynclib(asynclib_name: Optional[str] = None) -> Any:
-        if asynclib_name is None:
-            asynclib_name = sniffio.current_async_library()
+    async def test_ping():
+        """
+        tests cmds.ping
+        """
     
-        modulename = 'anyio._backends._' + asynclib_name
-        try:
->           return sys.modules[modulename]
-E           KeyError: 'anyio._backends._trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:140: KeyError
-
-During handling of the above exception, another exception occurred:
-
-pyfuncitem = <Function test_ping[trio]>
-
-    @pytest.hookimpl(tryfirst=True)
-    def pytest_pyfunc_call(pyfuncitem: Any) -> Optional[bool]:
-        def run_with_hypothesis(**kwargs: Any) -> None:
-            with get_runner(backend_name, backend_options) as runner:
-                runner.call(original_func, **kwargs)
+        # no arguments
+        with pytest.raises(error.ArgumentRequiredError):
+            assert await cmds.ping(cmessage.Message())
     
-        backend = pyfuncitem.funcargs.get('anyio_backend')
-        if backend:
-            backend_name, backend_options = extract_backend_and_options(backend)
+        # too many arguments
+        with pytest.raises(error.UnknownArgumentError):
+            assert await cmds.ping(cmessage.Message(), *["1", "2"])
     
-            if hasattr(pyfuncitem.obj, 'hypothesis'):
-                # Wrap the inner test function unless it's already wrapped
-                original_func = pyfuncitem.obj.hypothesis.inner_test
-                if original_func.__qualname__ != run_with_hypothesis.__qualname__:
-                    if iscoroutinefunction(original_func):
-                        pyfuncitem.obj.hypothesis.inner_test = run_with_hypothesis
-    
-                return None
-    
-            if iscoroutinefunction(pyfuncitem.obj):
-                funcargs = pyfuncitem.funcargs
-                testargs = {arg: funcargs[arg] for arg in pyfuncitem._fixtureinfo.argnames}
->               with get_runner(backend_name, backend_options) as runner:
+        # normal usage
+>       assert await cmds.ping(cmessage.Message(), *["google.com"])
 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:126: 
+tests/test_cmds.py:40: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/contextlib.py:135: in __enter__
-    return next(self.gen)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:34: in get_runner
-    asynclib = get_asynclib(backend_name)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:142: in get_asynclib
-    return import_module(modulename)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
+cmds/ping.py:33: in ping
+    output = subprocess.check_output(["ping", "-c", "4", args[0]]).decode()
+/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/subprocess.py:420: in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-    import array
-    import math
-    import socket
-    from concurrent.futures import Future
-    from dataclasses import dataclass
-    from functools import partial
-    from io import IOBase
-    from os import PathLike
-    from types import TracebackType
-    from typing import (
-        Any, Awaitable, Callable, Collection, ContextManager, Coroutine, Deque, Dict, Generic, List,
-        Mapping, NoReturn, Optional, Sequence, Set, Tuple, Type, TypeVar, Union)
+input = None, capture_output = False, timeout = None, check = True
+popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
+process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
+stdout = b'PING google.com (142.250.191.174) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3054ms\n\n'
+stderr = None, retcode = 1
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
     
->   import trio.from_thread
-E   ModuleNotFoundError: No module named 'trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_backends/_trio.py:14: ModuleNotFoundError
-_______________________________ test_time[trio] ________________________________
-
-asynclib_name = 'trio'
-
-    def get_asynclib(asynclib_name: Optional[str] = None) -> Any:
-        if asynclib_name is None:
-            asynclib_name = sniffio.current_async_library()
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them.
     
-        modulename = 'anyio._backends._' + asynclib_name
-        try:
->           return sys.modules[modulename]
-E           KeyError: 'anyio._backends._trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:140: KeyError
-
-During handling of the above exception, another exception occurred:
-
-pyfuncitem = <Function test_time[trio]>
-
-    @pytest.hookimpl(tryfirst=True)
-    def pytest_pyfunc_call(pyfuncitem: Any) -> Optional[bool]:
-        def run_with_hypothesis(**kwargs: Any) -> None:
-            with get_runner(backend_name, backend_options) as runner:
-                runner.call(original_func, **kwargs)
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
     
-        backend = pyfuncitem.funcargs.get('anyio_backend')
-        if backend:
-            backend_name, backend_options = extract_backend_and_options(backend)
+        If timeout is given, and the process takes too long, a TimeoutExpired
+        exception will be raised.
     
-            if hasattr(pyfuncitem.obj, 'hypothesis'):
-                # Wrap the inner test function unless it's already wrapped
-                original_func = pyfuncitem.obj.hypothesis.inner_test
-                if original_func.__qualname__ != run_with_hypothesis.__qualname__:
-                    if iscoroutinefunction(original_func):
-                        pyfuncitem.obj.hypothesis.inner_test = run_with_hypothesis
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
     
-                return None
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
     
-            if iscoroutinefunction(pyfuncitem.obj):
-                funcargs = pyfuncitem.funcargs
-                testargs = {arg: funcargs[arg] for arg in pyfuncitem._fixtureinfo.argnames}
->               with get_runner(backend_name, backend_options) as runner:
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:126: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/contextlib.py:135: in __enter__
-    return next(self.gen)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:34: in get_runner
-    asynclib = get_asynclib(backend_name)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:142: in get_asynclib
-    return import_module(modulename)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-    import array
-    import math
-    import socket
-    from concurrent.futures import Future
-    from dataclasses import dataclass
-    from functools import partial
-    from io import IOBase
-    from os import PathLike
-    from types import TracebackType
-    from typing import (
-        Any, Awaitable, Callable, Collection, ContextManager, Coroutine, Deque, Dict, Generic, List,
-        Mapping, NoReturn, Optional, Sequence, Set, Tuple, Type, TypeVar, Union)
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
     
->   import trio.from_thread
-E   ModuleNotFoundError: No module named 'trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_backends/_trio.py:14: ModuleNotFoundError
-________________________________ test_ver[trio] ________________________________
-
-asynclib_name = 'trio'
-
-    def get_asynclib(asynclib_name: Optional[str] = None) -> Any:
-        if asynclib_name is None:
-            asynclib_name = sniffio.current_async_library()
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
     
-        modulename = 'anyio._backends._' + asynclib_name
-        try:
->           return sys.modules[modulename]
-E           KeyError: 'anyio._backends._trio'
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['ping', '-c', '4', 'google.com']' returned non-zero exit status 1.
 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:140: KeyError
-
-During handling of the above exception, another exception occurred:
-
-pyfuncitem = <Function test_ver[trio]>
-
-    @pytest.hookimpl(tryfirst=True)
-    def pytest_pyfunc_call(pyfuncitem: Any) -> Optional[bool]:
-        def run_with_hypothesis(**kwargs: Any) -> None:
-            with get_runner(backend_name, backend_options) as runner:
-                runner.call(original_func, **kwargs)
-    
-        backend = pyfuncitem.funcargs.get('anyio_backend')
-        if backend:
-            backend_name, backend_options = extract_backend_and_options(backend)
-    
-            if hasattr(pyfuncitem.obj, 'hypothesis'):
-                # Wrap the inner test function unless it's already wrapped
-                original_func = pyfuncitem.obj.hypothesis.inner_test
-                if original_func.__qualname__ != run_with_hypothesis.__qualname__:
-                    if iscoroutinefunction(original_func):
-                        pyfuncitem.obj.hypothesis.inner_test = run_with_hypothesis
-    
-                return None
-    
-            if iscoroutinefunction(pyfuncitem.obj):
-                funcargs = pyfuncitem.funcargs
-                testargs = {arg: funcargs[arg] for arg in pyfuncitem._fixtureinfo.argnames}
->               with get_runner(backend_name, backend_options) as runner:
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:126: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/contextlib.py:135: in __enter__
-    return next(self.gen)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:34: in get_runner
-    asynclib = get_asynclib(backend_name)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:142: in get_asynclib
-    return import_module(modulename)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-    import array
-    import math
-    import socket
-    from concurrent.futures import Future
-    from dataclasses import dataclass
-    from functools import partial
-    from io import IOBase
-    from os import PathLike
-    from types import TracebackType
-    from typing import (
-        Any, Awaitable, Callable, Collection, ContextManager, Coroutine, Deque, Dict, Generic, List,
-        Mapping, NoReturn, Optional, Sequence, Set, Tuple, Type, TypeVar, Union)
-    
->   import trio.from_thread
-E   ModuleNotFoundError: No module named 'trio'
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_backends/_trio.py:14: ModuleNotFoundError
+/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/subprocess.py:524: CalledProcessError
 ______________________________ test_help[asyncio] ______________________________
 
     async def test_help():
@@ -427,82 +240,36 @@ E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/hel
 database/get.py:17: FileNotFoundError
 _______________________________ test_help[trio] ________________________________
 
-asynclib_name = 'trio'
-
-    def get_asynclib(asynclib_name: Optional[str] = None) -> Any:
-        if asynclib_name is None:
-            asynclib_name = sniffio.current_async_library()
+    async def test_help():
+        """
+        tests cmds.help
+        """
     
-        modulename = 'anyio._backends._' + asynclib_name
-        try:
->           return sys.modules[modulename]
-E           KeyError: 'anyio._backends._trio'
+        # no arguments
+>       assert await cmds.chelp(cmessage.Message())
 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:140: KeyError
-
-During handling of the above exception, another exception occurred:
-
-pyfuncitem = <Function test_help[trio]>
-
-    @pytest.hookimpl(tryfirst=True)
-    def pytest_pyfunc_call(pyfuncitem: Any) -> Optional[bool]:
-        def run_with_hypothesis(**kwargs: Any) -> None:
-            with get_runner(backend_name, backend_options) as runner:
-                runner.call(original_func, **kwargs)
-    
-        backend = pyfuncitem.funcargs.get('anyio_backend')
-        if backend:
-            backend_name, backend_options = extract_backend_and_options(backend)
-    
-            if hasattr(pyfuncitem.obj, 'hypothesis'):
-                # Wrap the inner test function unless it's already wrapped
-                original_func = pyfuncitem.obj.hypothesis.inner_test
-                if original_func.__qualname__ != run_with_hypothesis.__qualname__:
-                    if iscoroutinefunction(original_func):
-                        pyfuncitem.obj.hypothesis.inner_test = run_with_hypothesis
-    
-                return None
-    
-            if iscoroutinefunction(pyfuncitem.obj):
-                funcargs = pyfuncitem.funcargs
-                testargs = {arg: funcargs[arg] for arg in pyfuncitem._fixtureinfo.argnames}
->               with get_runner(backend_name, backend_options) as runner:
-
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:126: 
+tests/test_cmds.py:79: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/contextlib.py:135: in __enter__
-    return next(self.gen)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/pytest_plugin.py:34: in get_runner
-    asynclib = get_asynclib(backend_name)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_core/_eventloop.py:142: in get_asynclib
-    return import_module(modulename)
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
+cmds/help.py:34: in chelp
+    string = '\n'.join(get("help"))
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-    import array
-    import math
-    import socket
-    from concurrent.futures import Future
-    from dataclasses import dataclass
-    from functools import partial
-    from io import IOBase
-    from os import PathLike
-    from types import TracebackType
-    from typing import (
-        Any, Awaitable, Callable, Collection, ContextManager, Coroutine, Deque, Dict, Generic, List,
-        Mapping, NoReturn, Optional, Sequence, Set, Tuple, Type, TypeVar, Union)
-    
->   import trio.from_thread
-E   ModuleNotFoundError: No module named 'trio'
+args = ('help',)
 
-/opt/hostedtoolcache/Python/3.10.0/x64/lib/python3.10/site-packages/anyio/_backends/_trio.py:14: ModuleNotFoundError
+    def get(*args):
+        """
+        get(*args)
+    
+        retrieves data from database with args as path
+        """
+    
+>       with open(os.path.join(*(["db-database"]+list(args))), 'r', encoding="utf-8") as file:
+E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/help'
+
+database/get.py:17: FileNotFoundError
 =========================== short test summary info ============================
-FAILED tests/test_cmds.py::test_echo[trio] - ModuleNotFoundError: No module n...
 FAILED tests/test_cmds.py::test_ping[asyncio] - subprocess.CalledProcessError...
-FAILED tests/test_cmds.py::test_ping[trio] - ModuleNotFoundError: No module n...
-FAILED tests/test_cmds.py::test_time[trio] - ModuleNotFoundError: No module n...
-FAILED tests/test_cmds.py::test_ver[trio] - ModuleNotFoundError: No module na...
+FAILED tests/test_cmds.py::test_ping[trio] - subprocess.CalledProcessError: C...
 FAILED tests/test_cmds.py::test_help[asyncio] - FileNotFoundError: [Errno 2] ...
-FAILED tests/test_cmds.py::test_help[trio] - ModuleNotFoundError: No module n...
-========================= 7 failed, 3 passed in 13.58s =========================
+FAILED tests/test_cmds.py::test_help[trio] - FileNotFoundError: [Errno 2] No ...
+========================= 4 failed, 6 passed in 26.54s =========================
