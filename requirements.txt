@@ -10,3 +10,4 @@ pytest
 anybadge
 pytz
 anyio
+trio
