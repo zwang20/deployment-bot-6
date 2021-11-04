@@ -10,3 +10,5 @@ from .echo import echo
 from .ping import ping
 from .ver import ver
 from .help import chelp
+from .database import dwrite
+from .kick import kick
