@@ -136,7 +136,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
     - name: Get current date
-      run: TZ='UTC' date > date.txt
+      run: |
+        export TZ="UTC"
+        date | tee date.txt
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:

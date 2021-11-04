@@ -3,7 +3,7 @@
 while true; do
     echo "Pushing to database"
     sudo chmod 777 -R .
-    TZ='UTC'
+    export TZ="UTC"
     date > data.txt
     cd db-database
     git add -A
