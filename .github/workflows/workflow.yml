@@ -1,9 +1,5 @@
 name: Workflow
 
-concurrency: 
-  group: workflow
-  cancel-in-progress: true
-
 on:
   push:
     branches: [ main ]
