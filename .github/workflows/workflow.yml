@@ -34,8 +34,6 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'update pylint'
         add: '["reports/pylint.txt", "badges/pylint.txt"]'
   pylint-badge:
@@ -61,8 +59,6 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'pylint badge'
         add: '["badges/pylint.svg"]'
   coverage:
@@ -98,8 +94,6 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'update coverage'
         add: '["coverage.txt", "badges/coverage.txt", "coverage/*"]'
   coverage-badge:
@@ -125,8 +119,6 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'coverage badge'
         add: '["badges/coverage.svg"]'
   date:
@@ -139,13 +131,12 @@ jobs:
       run: |
         export TZ="UTC"
         date | tee date.txt
+        date | tee data.txt
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'update date'
-        add: '["date.txt"]'
+        add: '["date.txt", "data.txt"]'
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -170,8 +161,6 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
-        pull: 'NO-PULL'
-        push: "--force"
         message: 'update pytest'
         add: '["reports/pytest.txt"]'
   deploy:
