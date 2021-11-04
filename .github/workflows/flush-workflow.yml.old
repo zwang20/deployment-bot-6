@@ -1,0 +1,23 @@
+name: Flush Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  flush:
+    name: Flush workflow
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Running pylint
+      run: |
+        touch flush
+    - name: Upload files
+      uses: EndBug/add-and-commit@v7.4.0
+      with:
+        pull: 'NO-PULL'
+        push: '--force'
+        message: 'flush workflow'
+        add: '["flush"]'
