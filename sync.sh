@@ -8,7 +8,7 @@ while true; do
     cd db-database
     git add -A
     git commit -m "Database Sync from $(hostname)"
-    git push --force
+    git push
     echo "Pulling from database"
     git stash
     git fetch origin
