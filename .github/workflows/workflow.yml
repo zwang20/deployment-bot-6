@@ -35,11 +35,10 @@ jobs:
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/pylint.txt
         git add reports/pylint.txt
-        git commit -m "Update pylint"
+        git commit --allow-empty -m "Update pylint"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   pylint-badge:
     name: Pylint badge
     runs-on: ubuntu-latest
@@ -65,11 +64,10 @@ jobs:
         git config --global user.name 'Michael Wang'
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/pylint.svg
-        git commit -m "Update pylint badge"
+        git commit --allow-empty -m "Update pylint badge"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -106,11 +104,10 @@ jobs:
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/coverage.txt
         git add reports/coverage.txt
-        git commit -m "Update coverage"
+        git commit --allow-empty -m "Update coverage"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   coverage-badge:
     name: Coverage badge
     runs-on: ubuntu-latest
@@ -136,11 +133,10 @@ jobs:
         git config --global user.name 'Michael Wang'
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/coverage.svg
-        git commit -m "Update coverage badge"
+        git commit --allow-empty -m "Update coverage badge"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -157,11 +153,10 @@ jobs:
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add date.txt
         git add data.txt
-        git commit -m "Update date"
+        git commit --allow-empty -m "Update date"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -188,11 +183,10 @@ jobs:
         git config --global user.name 'Michael Wang'
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add reports/pytest.txt
-        git commit -m "Update pytest"
+        git commit --allow-empty -m "Update pytest"
         git checkout .
         git pull --rebase
         git push
-      continue-on-error: true
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
