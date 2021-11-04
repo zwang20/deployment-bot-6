@@ -159,7 +159,7 @@ def main():
         ).start()
         multiprocessing.Process(
             target=subprocess.run,
-            args=(("py", "sync.py"),),
+            args=(("bash", "sync.sh"),),
             daemon=True,
         ).start()
 
@@ -172,7 +172,7 @@ def main():
         ).start()
         multiprocessing.Process(
             target=subprocess.run,
-            args=(("python3", "sync.py"),),
+            args=(("bash", "sync.sh"),),
             daemon=True,
         ).start()
 
