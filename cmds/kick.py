@@ -6,6 +6,7 @@ includes kick
 
 from client import client
 from database import get
+from error import AuthorisationError, ArgumentRequiredError
 
 
 async def kick(message, *args):
@@ -41,4 +42,6 @@ async def kick(message, *args):
 
             return 'User <@' + str(args[0]) + '> has been kicked'
 
-        return 'Argument <User ID> missing'
+        raise ArgumentRequiredError('User ID')
+
+    raise AuthorisationError
