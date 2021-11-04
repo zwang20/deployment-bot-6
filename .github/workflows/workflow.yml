@@ -26,13 +26,20 @@ jobs:
       run: |
         mkdir -p badges
         mkdir -p reports
+        rm -f badges/pylint.txt
+        rm -f reports/pylint.txt
         find . -type f -name "*.py" | xargs pylint | tee reports/pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'update pylint'
-        add: '["reports/pylint.txt", "badges/pylint.txt"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add badges/pylint.txt
+        git add reports/pylint.txt
+        git commit -m "Update pylint"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   pylint-badge:
     name: Pylint badge
     runs-on: ubuntu-latest
@@ -54,11 +61,15 @@ jobs:
         rm -f badges/pylint.svg
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'pylint badge'
-        add: '["badges/pylint.svg"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add badges/pylint.svg
+        git commit -m "Update pylint badge"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -90,11 +101,16 @@ jobs:
         mkdir -p reports
         coverage report | tee reports/coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'update coverage'
-        add: '["coverage.txt", "badges/coverage.txt", "coverage/*"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add badges/coverage.txt
+        git add reports/coverage.txt
+        git commit -m "Update coverage"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   coverage-badge:
     name: Coverage badge
     runs-on: ubuntu-latest
@@ -116,11 +132,15 @@ jobs:
         rm -f badges/coverage.svg
         anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'coverage badge'
-        add: '["badges/coverage.svg"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add badges/coverage.svg
+        git commit -m "Update coverage badge"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -130,14 +150,18 @@ jobs:
     - name: Get current date
       run: |
         export TZ="UTC"
-        date | tee date.txt
-        date | tee data.txt
+        date | tee date.txt | tee data.txt
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'update date'
-        add: '["date.txt", "data.txt"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add date.txt
+        git add data.txt
+        git commit -m "Update date"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -160,11 +184,15 @@ jobs:
         mkdir -p reports
         pytest | tee reports/pytest.txt
     - name: Upload files
-      uses: EndBug/add-and-commit@v7.4.0
-      with:
-        pull: '--rebase'
-        message: 'update pytest'
-        add: '["reports/pytest.txt"]'
+      run: |
+        git config --global user.name 'Michael Wang'
+        git config --global user.email 'zwang20@users.noreply.github.com'
+        git add reports/pytest.txt
+        git commit -m "Update pytest"
+        git stash
+        git pull --rebase
+        git push
+        git stash pop
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
