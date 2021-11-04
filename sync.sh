@@ -14,7 +14,7 @@ while true; do
     git stash
     git fetch origin
     git reset --hard origin/main
-    git pull
+    git pull --rebase
     git stash pop
     cd ..
     sleep 60

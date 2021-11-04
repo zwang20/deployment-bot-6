@@ -34,6 +34,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'update pylint'
         add: '["reports/pylint.txt", "badges/pylint.txt"]'
   pylint-badge:
@@ -59,6 +60,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'pylint badge'
         add: '["badges/pylint.svg"]'
   coverage:
@@ -94,6 +96,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'update coverage'
         add: '["coverage.txt", "badges/coverage.txt", "coverage/*"]'
   coverage-badge:
@@ -119,6 +122,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'coverage badge'
         add: '["badges/coverage.svg"]'
   date:
@@ -135,6 +139,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'update date'
         add: '["date.txt", "data.txt"]'
   pytest:
@@ -161,6 +166,7 @@ jobs:
     - name: Upload files
       uses: EndBug/add-and-commit@v7.4.0
       with:
+        pull: '--rebase'
         message: 'update pytest'
         add: '["reports/pytest.txt"]'
   deploy:
