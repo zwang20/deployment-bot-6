@@ -29,7 +29,6 @@ jobs:
         rm -f badges/pylint.txt
         rm -f reports/pylint.txt
         find . -type f -name "*.py" | xargs pylint | tee reports/pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
-        rm -f env.py
     - name: Upload files
       run: |
         git config --global user.name 'Michael Wang'
@@ -37,6 +36,7 @@ jobs:
         git add badges/pylint.txt
         git add reports/pylint.txt
         git commit -m "Update pylint"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
@@ -66,6 +66,7 @@ jobs:
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/pylint.svg
         git commit -m "Update pylint badge"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
@@ -99,7 +100,6 @@ jobs:
         mkdir -p badges
         mkdir -p reports
         coverage report | tee reports/coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
-        rm -f env.py
     - name: Upload files
       run: |
         git config --global user.name 'Michael Wang'
@@ -107,6 +107,7 @@ jobs:
         git add badges/coverage.txt
         git add reports/coverage.txt
         git commit -m "Update coverage"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
@@ -136,6 +137,7 @@ jobs:
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add badges/coverage.svg
         git commit -m "Update coverage badge"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
@@ -156,6 +158,7 @@ jobs:
         git add date.txt
         git add data.txt
         git commit -m "Update date"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
@@ -180,13 +183,13 @@ jobs:
       run: |
         mkdir -p reports
         pytest | tee reports/pytest.txt
-        rm -f env.py
     - name: Upload files
       run: |
         git config --global user.name 'Michael Wang'
         git config --global user.email 'zwang20@users.noreply.github.com'
         git add reports/pytest.txt
         git commit -m "Update pytest"
+        git checkout .
         git pull --rebase
         git push
       continue-on-error: true
