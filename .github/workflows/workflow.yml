@@ -39,6 +39,7 @@ jobs:
         git commit -m "Update pylint"
         git pull --rebase
         git push
+      continue-on-error: true
   pylint-badge:
     name: Pylint badge
     runs-on: ubuntu-latest
@@ -67,6 +68,7 @@ jobs:
         git commit -m "Update pylint badge"
         git pull --rebase
         git push
+      continue-on-error: true
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -107,6 +109,7 @@ jobs:
         git commit -m "Update coverage"
         git pull --rebase
         git push
+      continue-on-error: true
   coverage-badge:
     name: Coverage badge
     runs-on: ubuntu-latest
@@ -135,6 +138,7 @@ jobs:
         git commit -m "Update coverage badge"
         git pull --rebase
         git push
+      continue-on-error: true
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -154,6 +158,7 @@ jobs:
         git commit -m "Update date"
         git pull --rebase
         git push
+      continue-on-error: true
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -184,6 +189,7 @@ jobs:
         git commit -m "Update pytest"
         git pull --rebase
         git push
+      continue-on-error: true
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
