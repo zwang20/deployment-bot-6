@@ -32,7 +32,7 @@ async def dice(*args):
     assert dice_y > 0
 
     # roll dice
-    dies = [random.randint(1, dice_x) for _ in range(dice_y)]
+    dies = [random.randint(1, dice_y) for _ in range(dice_x)]
 
     # print result
     string = "\n".join([
