@@ -12,3 +12,4 @@ from .ver import ver
 from .help import chelp
 from .database import dwrite
 from .kick import kick
+from .invite import invite
