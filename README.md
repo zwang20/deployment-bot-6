@@ -1,4 +1,4 @@
-![pylint](./badges/pylint.svg) ![coverage](./badges/coverage.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/zwang20/deployment-bot-6/badge/main)](https://www.codefactor.io/repository/github/zwang20/deployment-bot-6/overview/main) ![pylint](./badges/pylint.svg) ![coverage](./badges/coverage.svg)
 
 # Deployment Bot v6
 
