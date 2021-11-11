@@ -87,4 +87,21 @@ async def test_help():
         assert await cmds.chelp(cmessage.Message(), *["1"])
 
     # help for cmds.echo
-    assert await cmds.chelp(cmessage.Message(), *["echo"])
+    with pytest.raises(FileNotFoundError):
+        assert await cmds.chelp(cmessage.Message(), *["echo"])
+
+async def test_invite():
+    """
+    tests cmds.invite
+    """
+
+    # no arguments
+    assert await cmds.invite(cmessage.Message())
+
+    # too many arguments
+    with pytest.raises(error.UnknownArgumentError):
+        assert await cmds.invite(cmessage.Message(), *["1", "2"])
+
+    # normal usage
+    with pytest.raises(FileNotFoundError):
+        assert await cmds.invite(cmessage.Message(), *["1"])

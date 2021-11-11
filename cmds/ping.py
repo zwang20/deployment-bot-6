@@ -28,17 +28,17 @@ async def ping(message, *args):
     if os.name == "nt":
         output = subprocess.run(
             ["ping", args[0]],
-            check=True,
+            check=False,
             stdout=subprocess.PIPE
-        ).stdout
+        ).stdout.decode()
 
     # if unix
     else:
         output = subprocess.run(
             ["ping", "-c", "4", args[0]],
-            check=True,
+            check=False,
             stdout=subprocess.PIPE
-        ).stdout
+        ).stdout.decode()
 
     # return
     return f"""```{output}```"""
