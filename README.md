@@ -13,7 +13,7 @@ Help:
     calc <argument>:    do calculations               -- temporarily removed
     ccalc <argument>:   do comlpex calculations       -- temporarily removed
     time [timezone]:    get time
-    dice <x>d<x>:       roll dice                     -- temporarily removed
+    dice <x>d<x>:       roll dice
     ping [website]:     ping website
     profile:            return profile                -- temporarily removed
     emote <name>:       use emotes from other servers -- temporarily removed
