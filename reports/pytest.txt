@@ -34,7 +34,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.250.191.142) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3064ms\n\n'
+stdout = b'PING google.com (142.250.68.174) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3065ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -133,7 +133,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 input = None, capture_output = False, timeout = None, check = True
 popenargs = (['ping', '-c', '4', 'google.com'],), kwargs = {'stdout': -1}
 process = <Popen: returncode: 1 args: ['ping', '-c', '4', 'google.com']>
-stdout = b'PING google.com (142.250.191.142) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3069ms\n\n'
+stdout = b'PING google.com (142.250.68.174) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3077ms\n\n'
 stderr = None, retcode = 1
 
     def run(*popenargs,
@@ -268,4 +268,4 @@ FAILED tests/test_cmds.py::test_ping[asyncio] - subprocess.CalledProcessError...
 FAILED tests/test_cmds.py::test_ping[trio] - subprocess.CalledProcessError: C...
 FAILED tests/test_cmds.py::test_help[asyncio] - FileNotFoundError: [Errno 2] ...
 FAILED tests/test_cmds.py::test_help[trio] - FileNotFoundError: [Errno 2] No ...
-========================= 4 failed, 6 passed in 26.80s =========================
+========================= 4 failed, 6 passed in 26.75s =========================
