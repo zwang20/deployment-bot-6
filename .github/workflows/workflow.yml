@@ -32,15 +32,19 @@ jobs:
         rm -f reports/pylint.txt
         find . -type f -name "*.py" | xargs pylint | tee reports/pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add badges/pylint.txt
-        git add reports/pylint.txt
-        git commit --allow-empty -m "Update pylint"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add badges/pylint.txt
+          git add reports/pylint.txt
+          git commit --allow-empty -m "Update pylint"
+          git checkout .
+          git pull --rebase
+          git push
   pylint-badge:
     name: Pylint badge
     runs-on: ubuntu-latest
@@ -62,14 +66,18 @@ jobs:
         rm -f badges/pylint.svg
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add badges/pylint.svg
-        git commit --allow-empty -m "Update pylint badge"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add badges/pylint.svg
+          git commit --allow-empty -m "Update pylint badge"
+          git checkout .
+          git pull --rebase
+          git push
   coverage:
     name: Coverage
     runs-on: ubuntu-latest
@@ -101,15 +109,19 @@ jobs:
         mkdir -p reports
         coverage report | tee reports/coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add badges/coverage.txt
-        git add reports/coverage.txt
-        git commit --allow-empty -m "Update coverage"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add badges/coverage.txt
+          git add reports/coverage.txt
+          git commit --allow-empty -m "Update coverage"
+          git checkout .
+          git pull --rebase
+          git push
   coverage-badge:
     name: Coverage badge
     runs-on: ubuntu-latest
@@ -131,14 +143,18 @@ jobs:
         rm -f badges/coverage.svg
         anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add badges/coverage.svg
-        git commit --allow-empty -m "Update coverage badge"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add badges/coverage.svg
+          git commit --allow-empty -m "Update coverage badge"
+          git checkout .
+          git pull --rebase
+          git push
   date:
     name: Date
     runs-on: ubuntu-latest
@@ -150,15 +166,19 @@ jobs:
         export TZ="UTC"
         date | tee date.txt | tee data.txt
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add date.txt
-        git add data.txt
-        git commit --allow-empty -m "Update date"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add date.txt
+          git add data.txt
+          git commit --allow-empty -m "Update date"
+          git checkout .
+          git pull --rebase
+          git push
   pytest:
     name: Pytest
     runs-on: ubuntu-latest
@@ -181,14 +201,18 @@ jobs:
         mkdir -p reports
         pytest | tee reports/pytest.txt
     - name: Upload files
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add reports/pytest.txt
-        git commit --allow-empty -m "Update pytest"
-        git checkout .
-        git pull --rebase
-        git push
+      uses: nick-invision/retry@v2.4.0
+      with:
+        timeout_minutes: 10
+        max_attempts: 10
+        command: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add reports/pytest.txt
+          git commit --allow-empty -m "Update pytest"
+          git checkout .
+          git pull --rebase
+          git push
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
