@@ -20,7 +20,7 @@ async def dice(*args):
     # check for argument
     if len(args) == 0:
         raise ArgumentRequiredError
-    elif len(args) > 1:
+    if len(args) > 1:
         raise UnknownArgumentError
 
     # get dice

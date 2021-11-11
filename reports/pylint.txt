@@ -1,6 +1,4 @@
-************* Module cmds.dice
-cmds/dice.py:21:4: R1720: Unnecessary "elif" after "raise" (no-else-raise)
 
------------------------------------
-Your code has been rated at 9.96/10
+------------------------------------
+Your code has been rated at 10.00/10
 
