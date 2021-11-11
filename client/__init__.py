@@ -16,8 +16,5 @@ loop = asyncio.new_event_loop()
 global BOT_STATUS
 BOT_STATUS = False
 
-global DEBUG_STATUS
-DEBUG_STATUS = True
-
 global client
 client = discord.Client(loop=loop)

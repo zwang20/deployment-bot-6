@@ -68,7 +68,7 @@ async def process_message(message) -> list:
         return []
 
     # t-bot
-    if client.DEBUG_STATUS:
+    if env.DEBUG_STATUS:
         if message.content.lower().startswith("<@596544931359883274>"):
             content = message.content.replace("<@596544931359883274>", "", 1).split()
         elif message.content.lower().startswith("<@!596544931359883274>"):
