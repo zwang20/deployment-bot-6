@@ -37,8 +37,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/pylint.txt
           git add reports/pylint.txt
           git commit --allow-empty -m "Update pylint"
@@ -71,8 +71,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/pylint.svg
           git commit --allow-empty -m "Update pylint badge"
           git checkout .
@@ -114,8 +114,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/coverage.txt
           git add reports/coverage.txt
           git commit --allow-empty -m "Update coverage"
@@ -148,8 +148,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/coverage.svg
           git commit --allow-empty -m "Update coverage badge"
           git checkout .
@@ -171,8 +171,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add date.txt
           git add data.txt
           git commit --allow-empty -m "Update date"
@@ -206,8 +206,8 @@ jobs:
         timeout_minutes: 10
         max_attempts: 10
         command: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
           git add reports/pytest.txt
           git commit --allow-empty -m "Update pytest"
           git checkout .
