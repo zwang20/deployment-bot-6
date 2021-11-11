@@ -76,7 +76,8 @@ async def test_help():
     """
 
     # no arguments
-    assert await cmds.chelp(cmessage.Message())
+    with pytest.raises(FileNotFoundError):
+        assert await cmds.chelp(cmessage.Message())
 
     # too many arguments
     with pytest.raises(error.UnknownArgumentError):
