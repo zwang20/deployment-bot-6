@@ -5,9 +5,9 @@ cmds/__init__.py           8      0   100%
 cmds/database.py           8      5    38%
 cmds/echo.py              15      7    53%
 cmds/help.py              13      6    54%
-cmds/invite.py            10      7    30%
+cmds/invite.py            10      0   100%
 cmds/kick.py              17     13    24%
-cmds/ping.py              12      2    83%
+cmds/ping.py              12      1    92%
 cmds/time.py              13      0   100%
 cmds/ver.py               10      0   100%
 cmessage.py               17      2    88%
@@ -16,7 +16,7 @@ database/get.py            4      1    75%
 database/write.py          4      2    50%
 error.py                  35      9    74%
 tests/__init__.py          0      0   100%
-tests/test_cmds.py        33      5    85%
+tests/test_cmds.py        40      6    85%
 version.py                 1      0   100%
 ------------------------------------------
-TOTAL                    208     59    72%
+TOTAL                    215     52    76%
