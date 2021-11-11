@@ -1,11 +1,8 @@
 discord.py
 discord-py-slash-command
 pytest
-Flask
-Flask-Cors
 coverage
 pylint
-PyJWT
 pytest
 anybadge
 pytz
