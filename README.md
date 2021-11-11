@@ -17,5 +17,5 @@ Help:
     ping [website]:     ping website
     profile:            return profile                -- temporarily removed
     emote <name>:       use emotes from other servers -- temporarily removed
-    invite:             invite bot                    -- temporarily removed
+    invite:             invite bot
     ver:                returns bot version
