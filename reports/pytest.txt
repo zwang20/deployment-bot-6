@@ -9,21 +9,32 @@ tests/test_cmds.py ........FF..                                          [100%]
 =================================== FAILURES ===================================
 ______________________________ test_help[asyncio] ______________________________
 
-    async def test_help():
+args = ('echo',)
+
+    async def chelp(*args):
         """
-        tests cmds.help
+        chelp()
+    
+        stands for command help
+    
+        returns string for verb
         """
     
-        # no arguments
->       assert await cmds.chelp(cmessage.Message())
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 1:
+            raise error.UnknownArgumentError
+    
+        if args:
+            try:
+>               string = '\n'.join(get("helps", args[0]))
 
-tests/test_cmds.py:79: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-cmds/help.py:34: in chelp
-    string = '\n'.join(get("help"))
+cmds/help.py:29: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-args = ('help',)
+args = ('helps', 'echo')
 
     def get(*args):
         """
@@ -33,26 +44,90 @@ args = ('help',)
         """
     
 >       with open(os.path.join(*(["db-database"]+list(args))), 'r', encoding="utf-8") as file:
-E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/help'
+E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/helps/echo'
 
 database/get.py:17: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    async def test_help():
+        """
+        tests cmds.help
+        """
+    
+        # no arguments
+        with pytest.raises(FileNotFoundError):
+            assert await cmds.chelp(cmessage.Message())
+    
+        # too many arguments
+        with pytest.raises(error.UnknownArgumentError):
+            assert await cmds.chelp(cmessage.Message(), *["1", "2"])
+    
+        # unknwon help
+        with pytest.raises(error.HelpNotFoundError):
+            assert await cmds.chelp(cmessage.Message(), *["1"])
+    
+        # help for cmds.echo
+        with pytest.raises(FileNotFoundError):
+>           assert await cmds.chelp(cmessage.Message(), *["echo"])
+
+tests/test_cmds.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('echo',)
+
+    async def chelp(*args):
+        """
+        chelp()
+    
+        stands for command help
+    
+        returns string for verb
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 1:
+            raise error.UnknownArgumentError
+    
+        if args:
+            try:
+                string = '\n'.join(get("helps", args[0]))
+            except FileNotFoundError as err:
+>               raise error.HelpNotFoundError from err
+E               error.HelpNotFoundError: Help not found
+
+cmds/help.py:31: HelpNotFoundError
 _______________________________ test_help[trio] ________________________________
 
-    async def test_help():
+args = ('echo',)
+
+    async def chelp(*args):
         """
-        tests cmds.help
+        chelp()
+    
+        stands for command help
+    
+        returns string for verb
         """
     
-        # no arguments
->       assert await cmds.chelp(cmessage.Message())
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 1:
+            raise error.UnknownArgumentError
+    
+        if args:
+            try:
+>               string = '\n'.join(get("helps", args[0]))
 
-tests/test_cmds.py:79: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-cmds/help.py:34: in chelp
-    string = '\n'.join(get("help"))
+cmds/help.py:29: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-args = ('help',)
+args = ('helps', 'echo')
 
     def get(*args):
         """
@@ -62,10 +137,63 @@ args = ('help',)
         """
     
 >       with open(os.path.join(*(["db-database"]+list(args))), 'r', encoding="utf-8") as file:
-E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/help'
+E       FileNotFoundError: [Errno 2] No such file or directory: 'db-database/helps/echo'
 
 database/get.py:17: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    async def test_help():
+        """
+        tests cmds.help
+        """
+    
+        # no arguments
+        with pytest.raises(FileNotFoundError):
+            assert await cmds.chelp(cmessage.Message())
+    
+        # too many arguments
+        with pytest.raises(error.UnknownArgumentError):
+            assert await cmds.chelp(cmessage.Message(), *["1", "2"])
+    
+        # unknwon help
+        with pytest.raises(error.HelpNotFoundError):
+            assert await cmds.chelp(cmessage.Message(), *["1"])
+    
+        # help for cmds.echo
+        with pytest.raises(FileNotFoundError):
+>           assert await cmds.chelp(cmessage.Message(), *["echo"])
+
+tests/test_cmds.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('echo',)
+
+    async def chelp(*args):
+        """
+        chelp()
+    
+        stands for command help
+    
+        returns string for verb
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check args
+        if len(args) > 1:
+            raise error.UnknownArgumentError
+    
+        if args:
+            try:
+                string = '\n'.join(get("helps", args[0]))
+            except FileNotFoundError as err:
+>               raise error.HelpNotFoundError from err
+E               error.HelpNotFoundError: Help not found
+
+cmds/help.py:31: HelpNotFoundError
 =========================== short test summary info ============================
-FAILED tests/test_cmds.py::test_help[asyncio] - FileNotFoundError: [Errno 2] ...
-FAILED tests/test_cmds.py::test_help[trio] - FileNotFoundError: [Errno 2] No ...
-======================== 2 failed, 10 passed in 26.58s =========================
+FAILED tests/test_cmds.py::test_help[asyncio] - error.HelpNotFoundError: Help...
+FAILED tests/test_cmds.py::test_help[trio] - error.HelpNotFoundError: Help no...
+======================== 2 failed, 10 passed in 26.65s =========================
