@@ -33,8 +33,8 @@ jobs:
         find . -type f -name "*.py" | xargs pylint | tee reports/pylint.txt | grep 'Your code has been rated at' | cut -d' ' -f 7 | cut -d'/' -f 1 > badges/pylint.txt
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add badges/pylint.txt
         git add reports/pylint.txt
         git commit --allow-empty -m "Update pylint"
@@ -63,8 +63,8 @@ jobs:
         anybadge --value=$(cat badges/pylint.txt) -f badges/pylint.svg pylint
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add badges/pylint.svg
         git commit --allow-empty -m "Update pylint badge"
         git checkout .
@@ -102,8 +102,8 @@ jobs:
         coverage report | tee reports/coverage.txt | grep 'TOTAL' | tr -s " " | cut -d' ' -f 4 | cut -d'%' -f 1 > badges/coverage.txt
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add badges/coverage.txt
         git add reports/coverage.txt
         git commit --allow-empty -m "Update coverage"
@@ -132,8 +132,8 @@ jobs:
         anybadge --value=$(cat badges/coverage.txt) -f badges/coverage.svg coverage
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add badges/coverage.svg
         git commit --allow-empty -m "Update coverage badge"
         git checkout .
@@ -151,8 +151,8 @@ jobs:
         date | tee date.txt | tee data.txt
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add date.txt
         git add data.txt
         git commit --allow-empty -m "Update date"
@@ -182,8 +182,8 @@ jobs:
         pytest | tee reports/pytest.txt
     - name: Upload files
       run: |
-        git config --global user.name 'Michael Wang'
-        git config --global user.email 'zwang20@users.noreply.github.com'
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git add reports/pytest.txt
         git commit --allow-empty -m "Update pytest"
         git checkout .
