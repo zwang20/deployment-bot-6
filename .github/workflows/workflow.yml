@@ -42,7 +42,7 @@ jobs:
           git add badges/pylint.txt
           git add reports/pylint.txt
           git commit --allow-empty -m "Update pylint"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   pylint-badge:
@@ -75,7 +75,7 @@ jobs:
           git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/pylint.svg
           git commit --allow-empty -m "Update pylint badge"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   coverage:
@@ -119,7 +119,7 @@ jobs:
           git add badges/coverage.txt
           git add reports/coverage.txt
           git commit --allow-empty -m "Update coverage"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   coverage-badge:
@@ -152,7 +152,7 @@ jobs:
           git config user.email ${{ github.actor }}@users.noreply.github.com
           git add badges/coverage.svg
           git commit --allow-empty -m "Update coverage badge"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   date:
@@ -176,7 +176,7 @@ jobs:
           git add date.txt
           git add data.txt
           git commit --allow-empty -m "Update date"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   pytest:
@@ -210,7 +210,7 @@ jobs:
           git config user.email ${{ github.actor }}@users.noreply.github.com
           git add reports/pytest.txt
           git commit --allow-empty -m "Update pytest"
-          git checkout .
+          git checkout main
           git pull --rebase
           git push
   deploy:
