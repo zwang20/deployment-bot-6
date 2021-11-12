@@ -28,8 +28,8 @@ async def dice(*args):
     dice_y = int(args[0].split('d')[1])
 
     # check dice
-    assert dice_x > 0
-    assert dice_y > 0
+    assert 0 < dice_x < 100
+    assert 0 < dice_y < 100
 
     # roll dice
     dies = [random.randint(1, dice_y) for _ in range(dice_x)]
