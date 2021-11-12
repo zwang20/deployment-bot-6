@@ -102,6 +102,7 @@ jobs:
     - name: Coverage Report
       run: |
         rm -rf coverage
+        mkdir -p coverage
         coverage html
         mv htmlcov/* coverage
     - name: Creating coverage report
