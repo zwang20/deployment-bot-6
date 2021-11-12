@@ -18,4 +18,4 @@ def wow(message, *args):
         raise error.UnknownArgumentError
 
     # return wow
-    return "wow <@{}>".format(message.author.id)
+    return f"wow <@{message.author.id}>"
