@@ -15,9 +15,9 @@ cmessage.py               17      2    88%
 database/__init__.py       2      0   100%
 database/get.py            4      1    75%
 database/write.py          4      2    50%
-error.py                  35      6    83%
+error.py                  35      7    80%
 tests/__init__.py          0      0   100%
-tests/test_cmds.py        41      0   100%
+tests/test_cmds.py        39      0   100%
 version.py                 1      0   100%
 ------------------------------------------
-TOTAL                    231     50    78%
+TOTAL                    229     51    78%
