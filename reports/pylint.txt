@@ -1,7 +1,6 @@
 ************* Module cmds.emote
-cmds/emote.py:23:0: C0303: Trailing whitespace (trailing-whitespace)
 cmds/emote.py:28:0: R1721: Unnecessary use of a comprehension, use list([guild.emojis for guild in client.client.guilds]) instead. (unnecessary-comprehension)
 
 -----------------------------------
-Your code has been rated at 9.94/10
+Your code has been rated at 9.97/10
 
