@@ -1,6 +1,4 @@
-************* Module cmds.emote
-cmds/emote.py:29:0: R1721: Unnecessary use of a comprehension, use list([guild.emojis for guild in client.client.guilds if emote.name == args[0]]) instead. (unnecessary-comprehension)
 
------------------------------------
-Your code has been rated at 9.97/10
+------------------------------------
+Your code has been rated at 10.00/10
 
