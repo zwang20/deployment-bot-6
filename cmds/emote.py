@@ -20,7 +20,7 @@ async def emote(*args):
     # check args
     if len(args) == 0:
         raise error.ArgumentRequiredError
-    
+
     if len(args) > 1:
         raise error.UnknownArgumentError
 
