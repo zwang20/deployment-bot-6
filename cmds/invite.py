@@ -19,11 +19,11 @@ async def invite(*args):
 
     # check if args are empty
     if len(args) == 0:
-        link = '\n'.join(
+        link = '\n'.join([
             "https://discordapp.com/api/oauth2/"
             "authorize?client_id=681294773629485071&permissions=8&scope=bot",
             "https://github.com/zwang20/deployment-bot-6"
-        )
+        ])
         return link
 
     # check for extra args
