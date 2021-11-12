@@ -25,4 +25,6 @@ async def emote(*args):
         raise error.UnknownArgumentError
 
     # return output
-    return [emote for emote in [guild.emojis for guild in client.client.guilds]][args[0]]
+    return [
+        emote for emote in [guild.emojis for guild in client.client.guilds if emote.name == args[0]
+    ]][0]
