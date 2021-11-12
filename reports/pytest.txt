@@ -4,6 +4,80 @@ rootdir: /home/runner/work/deployment-bot-6/deployment-bot-6
 plugins: anyio-3.3.4
 collected 12 items
 
-tests/test_cmds.py ............                                          [100%]
+tests/test_cmds.py ..........FF                                          [100%]
 
-============================= 12 passed in 26.64s ==============================
+=================================== FAILURES ===================================
+_____________________________ test_invite[asyncio] _____________________________
+
+    async def test_invite():
+        """
+        tests cmds.invite
+        """
+    
+        # no arguments
+>       assert await cmds.invite(cmessage.Message())
+
+tests/test_cmds.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+
+    async def invite(*args):
+        """
+        invite()
+    
+        returns the invite link to the bot or the server
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check if args are empty
+        if len(args) == 0:
+>           link = '\n'.join(
+                "https://discordapp.com/api/oauth2/"
+                "authorize?client_id=681294773629485071&permissions=8&scope=bot",
+                "https://github.com/zwang20/deployment-bot-6"
+            )
+E           TypeError: str.join() takes exactly one argument (2 given)
+
+cmds/invite.py:22: TypeError
+______________________________ test_invite[trio] _______________________________
+
+    async def test_invite():
+        """
+        tests cmds.invite
+        """
+    
+        # no arguments
+>       assert await cmds.invite(cmessage.Message())
+
+tests/test_cmds.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+
+    async def invite(*args):
+        """
+        invite()
+    
+        returns the invite link to the bot or the server
+        """
+    
+        # fix args
+        args = args[1:]
+    
+        # check if args are empty
+        if len(args) == 0:
+>           link = '\n'.join(
+                "https://discordapp.com/api/oauth2/"
+                "authorize?client_id=681294773629485071&permissions=8&scope=bot",
+                "https://github.com/zwang20/deployment-bot-6"
+            )
+E           TypeError: str.join() takes exactly one argument (2 given)
+
+cmds/invite.py:22: TypeError
+=========================== short test summary info ============================
+FAILED tests/test_cmds.py::test_invite[asyncio] - TypeError: str.join() takes...
+FAILED tests/test_cmds.py::test_invite[trio] - TypeError: str.join() takes ex...
+======================== 2 failed, 10 passed in 26.70s =========================
