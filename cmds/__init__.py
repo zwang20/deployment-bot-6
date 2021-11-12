@@ -17,3 +17,4 @@ from .dice import dice
 from .others import wow, report
 from .emote import emote
 from .profile import profile, avatar
+from .calc import calc

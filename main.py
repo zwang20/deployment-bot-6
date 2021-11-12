@@ -31,6 +31,7 @@ verbs = {
 # aliases
 verbs["version"] = verbs["ver"]
 verbs["help"] = verbs["chelp"]
+verbs["ccalc"] = verbs["calc"]
 
 @client.client.event
 async def on_ready():
