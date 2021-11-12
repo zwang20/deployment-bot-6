@@ -129,18 +129,19 @@ async def on_message(message):
         output = traceback.format_exc().replace(os.getcwd(), "")
 
         # write to file
-        with open(
-            os.path.join("db-database", "errors", str(message.id)),
-            "w",
-            encoding="utf-8",
-        ) as file:
-            file.write('\n'.join([
-                str(datetime.datetime.now()),
-                ': '.join([str(message.guild.id), str(message.guild.name)]),
-                ': '.join([str(message.channel.id), str(message.channel.name)]),
-                ': '.join([str(message.author.id), str(message.author)]),
-                str(output),
-            ]))
+        if not isinstance(message.channel, discord.channel.DMChannel):
+            with open(
+                os.path.join("db-database", "errors", str(message.id)),
+                "w",
+                encoding="utf-8",
+            ) as file:
+                file.write('\n'.join([
+                    str(datetime.datetime.now()),
+                    ': '.join([str(message.guild.id), str(message.guild.name)]),
+                    ': '.join([str(message.channel.id), str(message.channel.name)]),
+                    ': '.join([str(message.author.id), str(message.author)]),
+                    str(output),
+                ]))
 
         # log error
         logging.warning(
