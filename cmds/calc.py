@@ -4,6 +4,7 @@ calc.py
 contains calc
 """
 
+import urllib.parse
 import error
 
 async def calc(*args):
@@ -21,4 +22,4 @@ async def calc(*args):
         raise error.ArgumentRequiredError
 
     # return output
-    return f"https://www.google.com.au/search?q={' '.join(args)}"
+    return f"https://www.google.com.au/search?q={urllib.parse.quote(' '.join(args))}"
