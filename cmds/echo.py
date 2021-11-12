@@ -40,6 +40,7 @@ async def echoa(message, *args):
         if args:
             database.write("echoa", str(message.id), string='\n'.join([
                 f"{datetime.datetime.now()}",
+                f"{message.guild.id}: {message.guild.name}",
                 f"{message.channel.id}: {message.channel.name}",
                 f"{message.author.id}: {message.author}",
                 f"{' '.join(args)}",
