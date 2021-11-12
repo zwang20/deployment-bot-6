@@ -32,6 +32,7 @@ verbs = {
 verbs["version"] = verbs["ver"]
 verbs["help"] = verbs["chelp"]
 verbs["ccalc"] = verbs["calc"]
+verbs["f"] = verbs["returnf"]
 
 @client.client.event
 async def on_ready():

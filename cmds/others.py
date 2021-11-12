@@ -37,3 +37,20 @@ async def report(*args):
 
     # return output
     return "https://github.com/zwang20/deployment-bot-6/issues"
+
+async def returnf(*args):
+    """
+    returnf()
+
+    does nothing
+    """
+
+    # fix args
+    args = args[1:]
+
+    # check for args
+    if len(args) > 0:
+        raise error.UnknownArgumentError
+
+    # return output
+    return "f"
