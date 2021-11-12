@@ -21,4 +21,4 @@ async def calc(*args):
         raise error.ArgumentRequiredError
 
     # return output
-    return "https://www.google.com.au/search?q={" ".join(args)}"
+    return f"https://www.google.com.au/search?q={' '.join(args)}"
