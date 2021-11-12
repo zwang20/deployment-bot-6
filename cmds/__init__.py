@@ -6,7 +6,7 @@ functions for running discord commands
 
 
 from .time import time
-from .echo import echo
+from .echo import echo, echoa
 from .ping import ping
 from .ver import ver
 from .help import chelp
