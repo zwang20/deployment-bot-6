@@ -26,5 +26,7 @@ async def emote(*args):
 
     # return output
     return [
-        emote for emote in [guild.emojis for guild in client.client.guilds if emote.name == args[0]
-    ]][0]
+        inner for outer in [
+            guild.emojis for guild in client.client.guilds
+        ] for inner in outer if inner.name == args[0]
+    ][0]
