@@ -2,7 +2,7 @@ Name                   Stmts   Miss  Cover
 ------------------------------------------
 client/__init__.py         5      0   100%
 cmds/__init__.py          13      0   100%
-cmds/calc.py               6      4    33%
+cmds/calc.py               7      4    43%
 cmds/database.py           8      5    38%
 cmds/dice.py              15     12    20%
 cmds/echo.py              15      7    53%
@@ -24,4 +24,4 @@ tests/__init__.py          0      0   100%
 tests/test_cmds.py        39      0   100%
 version.py                 1      0   100%
 ------------------------------------------
-TOTAL                    267     74    72%
+TOTAL                    268     74    72%
