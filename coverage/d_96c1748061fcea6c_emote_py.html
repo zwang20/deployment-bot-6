@@ -85,14 +85,16 @@
     <p class="pln"><span class="n"><a id="t26" href="#t26">26</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t">    <span class="com"># return output</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t28" href="#t28">28</a></span><span class="t">    <span class="key">return</span> <span class="op">[</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t">        <span class="nam">emote</span> <span class="key">for</span> <span class="nam">emote</span> <span class="key">in</span> <span class="op">[</span><span class="nam">guild</span><span class="op">.</span><span class="nam">emojis</span> <span class="key">for</span> <span class="nam">guild</span> <span class="key">in</span> <span class="nam">client</span><span class="op">.</span><span class="nam">client</span><span class="op">.</span><span class="nam">guilds</span> <span class="key">if</span> <span class="nam">emote</span><span class="op">.</span><span class="nam">name</span> <span class="op">==</span> <span class="nam">args</span><span class="op">[</span><span class="num">0</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t">    <span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="num">0</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t">        <span class="nam">inner</span> <span class="key">for</span> <span class="nam">outer</span> <span class="key">in</span> <span class="op">[</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t">            <span class="nam">guild</span><span class="op">.</span><span class="nam">emojis</span> <span class="key">for</span> <span class="nam">guild</span> <span class="key">in</span> <span class="nam">client</span><span class="op">.</span><span class="nam">client</span><span class="op">.</span><span class="nam">guilds</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t">        <span class="op">]</span> <span class="key">for</span> <span class="nam">inner</span> <span class="key">in</span> <span class="nam">outer</span> <span class="key">if</span> <span class="nam">inner</span><span class="op">.</span><span class="nam">name</span> <span class="op">==</span> <span class="nam">args</span><span class="op">[</span><span class="num">0</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t32" href="#t32">32</a></span><span class="t">    <span class="op">]</span><span class="op">[</span><span class="num">0</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.1.2</a>,
-            created at 2021-11-12 05:52 +0000
+            created at 2021-11-12 06:02 +0000
         </p>
     </div>
 </footer>
