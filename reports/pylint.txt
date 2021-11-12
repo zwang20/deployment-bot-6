@@ -1,6 +1,4 @@
-************* Module cmds.others
-cmds/others.py:21:11: C0209: Formatting a regular string which could be a f-string (consider-using-f-string)
 
------------------------------------
-Your code has been rated at 9.97/10
+------------------------------------
+Your code has been rated at 10.00/10
 
