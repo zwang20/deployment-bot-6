@@ -103,8 +103,8 @@ jobs:
       run: |
         rm -rf coverage
         coverage html
-        mv htmlcov coverage
-    - name: Creating coverage badge
+        mv htmlcov/* coverage
+    - name: Creating coverage report
       run: |
         mkdir -p badges
         mkdir -p reports
