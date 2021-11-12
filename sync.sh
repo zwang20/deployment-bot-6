@@ -5,7 +5,7 @@ while true; do
     sudo chmod 777 -R .
     export TZ="UTC"
     date > data.txt
-    cd db-database
+    cd db-database || exit
     git add -A
     export TZ="UTC"
     git commit -m "$(date) $(hostname)"
