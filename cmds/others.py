@@ -21,7 +21,7 @@ async def wow(message, *args):
     return f"wow <@{message.author.id}>"
 
 
-async def report(args):
+async def report(*args):
     """
     report()
 
