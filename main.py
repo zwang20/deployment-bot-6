@@ -1,4 +1,3 @@
-# pylint:disable=logging-fstring-interpolation
 """
 main.py
 
@@ -6,6 +5,7 @@ the main script for the program
 run `py main.py` on windows or
 `python3 main.py` for other os
 """
+
 import logging
 import datetime
 import traceback
@@ -154,22 +154,12 @@ def main():
     if os.name == "nt":
         multiprocessing.Process(
             target=subprocess.run,
-            args=(("py", "-m", "database.server"),),
-            daemon=True,
-        ).start()
-        multiprocessing.Process(
-            target=subprocess.run,
             args=(("bash", "sync.sh"),),
             daemon=True,
         ).start()
 
     # unix
     else:
-        multiprocessing.Process(
-            target=subprocess.run,
-            args=(("python3", "-m", "database.server"),),
-            daemon=True,
-        ).start()
         multiprocessing.Process(
             target=subprocess.run,
             args=(("bash", "sync.sh"),),
