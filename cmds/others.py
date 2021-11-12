@@ -28,6 +28,9 @@ async def report(args):
     does nothing
     """
 
+    # fix args
+    args = args[1:]
+
     # check for args
     if len(args) > 0:
         raise error.UnknownArgumentError
