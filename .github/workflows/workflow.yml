@@ -101,6 +101,7 @@ jobs:
       continue-on-error: true
     - name: Coverage Report
       run: |
+        rm -rf coverage
         coverage html
         mv htmlcov coverage
     - name: Creating coverage badge
@@ -116,6 +117,7 @@ jobs:
         command: |
           git config user.name ${{ github.actor }}
           git config user.email ${{ github.actor }}@users.noreply.github.com
+          git add coverage/*
           git add badges/coverage.txt
           git add reports/coverage.txt
           git commit --allow-empty -m "Update coverage"

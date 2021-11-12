@@ -87,10 +87,6 @@ async def test_help():
     with pytest.raises(error.HelpNotFoundError):
         assert await cmds.chelp(cmessage.Message(), *["1"])
 
-    # help for cmds.echo
-    with pytest.raises(FileNotFoundError):
-        assert await cmds.chelp(cmessage.Message(), *["echo"])
-
 async def test_invite():
     """
     tests cmds.invite
