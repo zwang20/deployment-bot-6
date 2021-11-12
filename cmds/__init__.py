@@ -14,4 +14,4 @@ from .database import dwrite
 from .kick import kick
 from .invite import invite
 from .dice import dice
-from .others import wow
+from .others import wow, report
