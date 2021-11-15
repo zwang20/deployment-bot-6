@@ -3,7 +3,8 @@
 # Deployment Bot v6
 
 This is a simple discord bot that does stuff
-Use d!<command> or @deployment bot <command>
+
+Use d!\<command> or @deployment bot \<command>
 
 Help:
 
