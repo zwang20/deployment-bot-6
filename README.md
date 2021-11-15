@@ -10,12 +10,12 @@ Help:
     <argument>:         required argument
 
     help [verb]:        get help
-    calc <argument>:    do calculations               -- temporarily removed
-    ccalc <argument>:   do comlpex calculations       -- temporarily removed
+    calc <argument>:    do calculations
+    ccalc <argument>:   do comlpex calculations
     time [timezone]:    get time
     dice <x>d<x>:       roll dice
     ping [website]:     ping website
     profile:            return profile                -- temporarily removed
-    emote <name>:       use emotes from other servers -- temporarily removed
+    emote <name>:       use emotes from other servers
     invite:             invite bot
     ver:                returns bot version
