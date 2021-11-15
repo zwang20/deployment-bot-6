@@ -21,3 +21,5 @@ Help:
     emote <name>:       use emotes from other servers
     invite:             invite bot
     ver:                returns bot version
+
+Check the coverage [here](https://zwang20.github.io/deployment-bot-6/)
