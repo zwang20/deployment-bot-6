@@ -3,6 +3,7 @@
 # Deployment Bot v6
 
 This is a simple discord bot that does stuff
+Use d!<command> or @deployment bot <command>
 
 Help:
 
@@ -15,7 +16,7 @@ Help:
     time [timezone]:    get time
     dice <x>d<x>:       roll dice
     ping [website]:     ping website
-    profile:            return profile                -- temporarily removed
+    profile:            return profile
     emote <name>:       use emotes from other servers
     invite:             invite bot
     ver:                returns bot version
