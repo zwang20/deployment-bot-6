@@ -54,7 +54,7 @@ main { position: relative; z-index: 1; }
 
 .indexfile footer { margin: 1rem 3.5rem; }
 
-.pyfile footer { margin: 1rem 1rem; }
+.pyfile footer { margin: 1rem; }
 
 footer .content { padding: 0; color: #666; font-style: italic; }
 
