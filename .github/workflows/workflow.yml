@@ -1,6 +1,6 @@
 name: Workflow
 
-concurrency: main
+concurrency: deploy
 
 on:
   push:
