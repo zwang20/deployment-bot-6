@@ -66,8 +66,8 @@ async def process_message(message) -> list:
     content = []
 
     # ignore bots
-    if message.author.bot:
-        return []
+    # if message.author.bot:
+        # return []
 
     # t-bot
     if env.DEBUG_STATUS:
